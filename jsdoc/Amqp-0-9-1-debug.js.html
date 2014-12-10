@@ -1,4 +1,31 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Amqp-0-9-1-debug.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: Amqp-0-9-1-debug.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
  * Copyright (c) 2007-2014 Kaazing Corporation. All rights reserved.
  * 
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -36,7 +63,7 @@ if (typeof Kaazing.namespace !== "function") {
 	        parts = parts.slice(1);
 	    }
 	    
-	    for (var i = 0; i < parts.length; i++) {
+	    for (var i = 0; i &lt; parts.length; i++) {
 	        // create a property if it does not exist
 	        if (typeof parent[parts[i]] === "undefined") {
 	            parent[parts[i]] = {};
@@ -98,7 +125,7 @@ var Logger = function(name) {
     // Load the logging configuration as specified by the kaazing:logging META tag
     var logConfString;
     var tags = document.getElementsByTagName("meta");
-    for(var i = 0; i < tags.length; i++) {
+    for(var i = 0; i &lt; tags.length; i++) {
         if (tags[i].name === 'kaazing:logging') {
             logConfString = tags[i].content;
             break;
@@ -107,7 +134,7 @@ var Logger = function(name) {
     Logger._logConf = {};
     if (logConfString) {
         var tokens = logConfString.split(',');
-        for (var i = 0; i < tokens.length; i++) {
+        for (var i = 0; i &lt; tokens.length; i++) {
             var logConfItems = tokens[i].split('=');
             Logger._logConf[logConfItems[0]] = logConfItems[1];
         }
@@ -133,7 +160,7 @@ var Logger = function(name) {
      * @memberOf Logger
      */
     $prototype.setLevel = function(level) {
-        if (level && level >= Logger.Level.ALL && level <= Logger.Level.OFF) {
+        if (level && level >= Logger.Level.ALL && level &lt;= Logger.Level.OFF) {
             this._level = level;
         }
     }    
@@ -151,12 +178,12 @@ var Logger = function(name) {
                 if (this._name.match(logKey)) {
                     var logVal = Logger._logConf[logKey];
                     if (logVal) {
-                        return (Logger.Level[logVal] <= level);
+                        return (Logger.Level[logVal] &lt;= level);
                     }
                 }
             }
         }
-        return (this._level <= level);
+        return (this._level &lt;= level);
     }
     
     var noop = function() {};
@@ -297,7 +324,7 @@ var getMetaValue = function(key) {
     var tags = document.getElementsByTagName("meta");
 
     // find tag with name matching key
-    for(var i=0; i < tags.length; i++) {
+    for(var i=0; i &lt; tags.length; i++) {
         if (tags[i].name === key) {
             var v = tags[i].content;
             ;;;ULOG.exiting(this, 'Utils.getMetaValue', v);
@@ -310,7 +337,7 @@ var getMetaValue = function(key) {
 var arrayCopy = function(array) {
     ;;;ULOG.entering(this, 'Utils.arrayCopy', array);
     var newArray = [];
-    for (var i=0; i<array.length; i++) {
+    for (var i=0; i&lt;array.length; i++) {
         newArray.push(array[i]);
     }
     return newArray;
@@ -319,7 +346,7 @@ var arrayCopy = function(array) {
 var arrayFilter = function(array, callback) {
     ;;;ULOG.entering(this, 'Utils.arrayFilter', {'array':array, 'callback':callback});
     var newArray = [];
-    for (var i=0; i<array.length; i++) {
+    for (var i=0; i&lt;array.length; i++) {
         var elt = array[i];
         if(callback(elt)) {
             newArray.push(array[i]);
@@ -330,7 +357,7 @@ var arrayFilter = function(array, callback) {
 
 var indexOf = function(array, searchElement) {
     ;;;ULOG.entering(this, 'Utils.indexOf', {'array':array, 'searchElement':searchElement});
-    for (var i=0; i<array.length; i++) {
+    for (var i=0; i&lt;array.length; i++) {
         if (array[i] == searchElement) {
             ;;;ULOG.exiting(this, 'Utils.indexOf', i);
             return i;
@@ -348,7 +375,7 @@ var indexOf = function(array, searchElement) {
 var decodeByteString = function(s) {
     ;;;ULOG.entering(this, 'Utils.decodeByteString', s);
     var a = [];
-    for (var i=0; i<s.length; i++) {
+    for (var i=0; i&lt;s.length; i++) {
         a.push(s.charCodeAt(i) & 0xFF);
     }
     var buf = new Kaazing.ByteBuffer(a);
@@ -366,7 +393,7 @@ var decodeArrayBuffer = function(array) {
     ;;;ULOG.entering(this, 'Utils.decodeArrayBuffer', array);
     var buf = new Uint8Array(array);
     var a = [];
-    for (var i=0; i<buf.length; i++) {
+    for (var i=0; i&lt;buf.length; i++) {
         a.push(buf[i]);
     }
     var buf = new Kaazing.ByteBuffer(a);
@@ -384,7 +411,7 @@ var decodeArrayBuffer2ByteBuffer = function(array) {
     ;;;ULOG.entering(this, 'Utils.decodeArrayBuffer2ByteBuffer');
     var buf = new Uint8Array(array);
     var a = [];
-    for (var i=0; i<buf.length; i++) {
+    for (var i=0; i&lt;buf.length; i++) {
         a.push(buf[i]);
     }
     ;;;ULOG.exiting(this, 'Utils.decodeArrayBuffer2ByteBuffer');
@@ -450,7 +477,7 @@ var encodeByteString = function(buf, requiresEscaping) {
 		    if (element == 0 && sendAsUTF8) {
 		        bytes[i] = 0x100;
 		    }
-		    else if (element < 0) {
+		    else if (element &lt; 0) {
 		        bytes[i] = element & 0xff;
 		    }
 		}
@@ -463,7 +490,7 @@ var encodeByteString = function(buf, requiresEscaping) {
             partOfBytes = bytes.slice(encodedLength, encodedLength + amountToEncode);
             encodedLength += amountToEncode;
 		    partsOfByteString.push(String.fromCharCode.apply(null, partOfBytes));
-        } while ( encodedLength < bytes.length);
+        } while ( encodedLength &lt; bytes.length);
 
 		// convert UTF-8 char codes to String
         var byteString = partsOfByteString.join("");
@@ -493,7 +520,7 @@ var getStringUnterminated = function(buf, cs) {
   var newLimit = buf.position;
   var oldLimit = buf.limit;
   var array = buf.array;
-  while (newLimit < oldLimit) {
+  while (newLimit &lt; oldLimit) {
     newLimit++;
   }
   try {
@@ -670,7 +697,7 @@ else {
 	     * @memberOf ByteOrder
 	     */
 	    var _toShort = function(byte1, byte0) {
-	        return (_toByte(byte1) << 8) | (byte0 & 255);
+	        return (_toByte(byte1) &lt;&lt; 8) | (byte0 & 255);
 	    }
 	    
 	    /**
@@ -682,7 +709,7 @@ else {
 	     * @memberOf ByteOrder
 	     */
 	    var _toUnsignedShort = function(byte1, byte0) {
-	        return ((byte1 & 255) << 8) | (byte0 & 255);
+	        return ((byte1 & 255) &lt;&lt; 8) | (byte0 & 255);
 	    }
 	
 	    /**
@@ -694,7 +721,7 @@ else {
 	     * @memberOf ByteOrder
 	     */
 	    var _toUnsignedMediumInt = function(byte2, byte1, byte0) {
-	        return ((byte2 & 255) << 16) | ((byte1 & 255) << 8) | (byte0 & 255);
+	        return ((byte2 & 255) &lt;&lt; 16) | ((byte1 & 255) &lt;&lt; 8) | (byte0 & 255);
 	    }
 	
 	    /**
@@ -718,7 +745,7 @@ else {
 	     * @memberOf ByteOrder
 	     */
 	    var _toMediumInt = function(byte2, byte1, byte0) {
-	        return ((byte2 & 255) << 16) | ((byte1 & 255) << 8) | (byte0 & 255);
+	        return ((byte2 & 255) &lt;&lt; 16) | ((byte1 & 255) &lt;&lt; 8) | (byte0 & 255);
 	    }
 	    
 	    /**
@@ -742,7 +769,7 @@ else {
 	     * @memberOf ByteOrder
 	     */
 	    var _toInt = function(byte3, byte2, byte1, byte0) {
-	        return (_toByte(byte3) << 24) | ((byte2 & 255) << 16) | ((byte1 & 255) << 8) | (byte0 & 255);
+	        return (_toByte(byte3) &lt;&lt; 24) | ((byte2 & 255) &lt;&lt; 16) | ((byte1 & 255) &lt;&lt; 8) | (byte0 & 255);
 	    }
 	    
 	    /**
@@ -789,7 +816,7 @@ else {
 	        $prototype._toUnsignedInt = _toUnsignedInt;
 	
 	        $prototype.toString = function() {
-	            return "<ByteOrder.BIG_ENDIAN>";
+	            return "&lt;ByteOrder.BIG_ENDIAN>";
 	        }
 	
 	        return new BigEndian();
@@ -851,7 +878,7 @@ else {
 	        }
 	        
 	        $prototype.toString = function() {
-	            return "<ByteOrder.LITTLE_ENDIAN>";
+	            return "&lt;ByteOrder.LITTLE_ENDIAN>";
 	        }
 	
 	        return new LittleEndian();
@@ -1054,7 +1081,7 @@ else {
 	     */
 	    $prototype.reset = function() {
 	      var m = this._mark;
-	      if (m < 0) {
+	      if (m &lt; 0) {
 	        throw new Error("Invalid mark");
 	      }
 	      this.position = m;
@@ -1155,7 +1182,7 @@ else {
 	    $prototype.indexOf = function(b) {
 	      var limit = this.limit;
 	      var array = this.array;
-	      for (var i=this.position; i < limit; i++) {
+	      for (var i=this.position; i &lt; limit; i++) {
 	        if (array[i] == b) {
 	          return i;
 	        }
@@ -1489,7 +1516,7 @@ else {
 	    // encapsulates the logic to store byte array in the buffer
 	    function _putBytesInternal($this, index, v) {
 	        var array = $this.array;
-	        for (var i = 0; i < v.length; i++) {
+	        for (var i = 0; i &lt; v.length; i++) {
 	            array[i + index] = v[i] & 255;
 	        }
 	    };
@@ -1548,7 +1575,7 @@ else {
 	        _autoExpand(this, v.byteLength);
 	        var u = new Uint8Array(v);
 	        // copy bytes into ByteBuffer
-	        for (var i=0; i<u.byteLength; i++) {
+	        for (var i=0; i&lt;u.byteLength; i++) {
 	        	this.putAt(this.position + i, u[i] & 0xFF);
 	        }
 	        this.position += v.byteLength;
@@ -1575,7 +1602,7 @@ else {
 	       var sourceBufferPosition = v.position;
 	       var currentPosition = this.position;
 	       
-	       for (var i = 0; i < len; i++) {
+	       for (var i = 0; i &lt; len; i++) {
 	           this.array[i + currentPosition] = sourceArray[i + sourceBufferPosition];
 	       }
 	       
@@ -1605,7 +1632,7 @@ else {
 	       var sourceBufferPosition = v.position;
 	       var currentPosition = this.position;
 	       
-	       for (var i = 0; i < len; i++) {
+	       for (var i = 0; i &lt; len; i++) {
 	           this.array[i + currentPosition] = sourceArray[i + sourceBufferPosition];
 	       }
 	       
@@ -1691,7 +1718,7 @@ else {
 	    $prototype.getBytes = function(size) {
 	    	_checkForRead(this,size);
 	        var byteArray = new Array();
-	        for(var i=0; i<size; i++) {
+	        for(var i=0; i&lt;size; i++) {
 	            byteArray.push(this.order._toByte(this.array[i+this.position]));
 	        }
 	        this.position += size;
@@ -1715,7 +1742,7 @@ else {
 	    	_checkForReadAt(this,index,size);
 	        var byteArray = new Array();
 	        var sourceArray = this.array;
-	        for (var i = 0; i < size; i++) {
+	        for (var i = 0; i &lt; size; i++) {
 	         byteArray.push(sourceArray[i + index]);
 	        }
 	        return byteArray;
@@ -2159,7 +2186,7 @@ else {
 	       }
 	       
 	       var hexDump = [];
-	       for (var i=pos; i < limit; i++) {
+	       for (var i=pos; i &lt; limit; i++) {
 	         var hex = (array[i] || 0).toString(16);
 	         if (hex.length == 1) {
 	             hex = "0" + hex;
@@ -2242,7 +2269,7 @@ else {
 	
 	    function _checkForReadAt($this, index, expected) {
 	      var end = index + expected;
-	      if (index < 0 || end > $this.limit) {
+	      if (index &lt; 0 || end > $this.limit) {
 	        throw new Error("Index out of bounds");
 	      }
 	      return $this;
@@ -2250,7 +2277,7 @@ else {
 	    
 	    function _checkForWriteAt($this, index, expected) {
 	      var end = index + expected;
-	      if (index < 0 || end > $this.limit) {
+	      if (index &lt; 0 || end > $this.limit) {
 	        throw new Error("Index out of bounds");
 	      }
 	      return $this;
@@ -2353,18 +2380,18 @@ else {
 	            
 	            // use different strategies for building string sizes greater or
 	            // less than 10k.
-	            var shortBuffer = remainingData < 10000;
+	            var shortBuffer = remainingData &lt; 10000;
 	
 	            var decoded = [];
 	            var sourceArray = buf.array;
 	            var beginIndex = buf.position;
 	            var endIndex = beginIndex + remainingData;
 	            var byte0, byte1, byte2, byte3;
-	            for (var i = beginIndex; i < endIndex; i++) {
+	            for (var i = beginIndex; i &lt; endIndex; i++) {
 	                byte0 = (sourceArray[i] & 255);
 	                var byteCount = charByteCount(byte0);
 	                var remaining = endIndex - i;
-	                if (remaining < byteCount) {
+	                if (remaining &lt; byteCount) {
 	                    break;
 	                }
 	                var charCode = null;
@@ -2378,7 +2405,7 @@ else {
 	                        i++;
 	                        byte1 = (sourceArray[i] & 255);
 	                        
-	                        charCode = ((byte0 & 31) << 6) | (byte1 & 63);
+	                        charCode = ((byte0 & 31) &lt;&lt; 6) | (byte1 & 63);
 	                        break;
 	                    case 3:
 	                        // 000800-00ffff    1110xxxx 10yyyyyy 10zzzzzz
@@ -2388,7 +2415,7 @@ else {
 	                        i++;
 	                        byte2 = (sourceArray[i] & 255);
 	                        
-	                        charCode = ((byte0 & 15) << 12) | ((byte1 & 63) << 6) | (byte2 & 63);
+	                        charCode = ((byte0 & 15) &lt;&lt; 12) | ((byte1 & 63) &lt;&lt; 6) | (byte2 & 63);
 	                        break;
 	                    case 4:
 	                        // 010000-10ffff    11110www 10xxxxxx 10yyyyyy 10zzzzzz
@@ -2401,7 +2428,7 @@ else {
 	                        i++;
 	                        byte3 = (sourceArray[i] & 255);
 	                        
-	                        charCode = ((byte0 & 7) << 18) | ((byte1 & 63) << 12) | ((byte2 & 63) << 6) | (byte3 & 63);
+	                        charCode = ((byte0 & 7) &lt;&lt; 18) | ((byte1 & 63) &lt;&lt; 12) | ((byte2 & 63) &lt;&lt; 6) | (byte3 & 63);
 	                        break;
 	                }
 	
@@ -2423,24 +2450,24 @@ else {
 		        var currentPosition = buf.position;
 		        var mark = currentPosition;
 		        var array = buf.array;
-		        for (var i = 0; i < str.length; i++) {
+		        for (var i = 0; i &lt; str.length; i++) {
 		            var charCode = str.charCodeAt(i);
-		            if (charCode < 0x80) {
+		            if (charCode &lt; 0x80) {
 		                // 000000-00007f    0zzzzzzz
 		                array[currentPosition++] = charCode;
 		            }
-		            else if (charCode < 0x0800) {
+		            else if (charCode &lt; 0x0800) {
 		                // 000080-0007ff    110yyyyy 10zzzzzz
 		                array[currentPosition++] = (charCode >> 6) | 192;
 		                array[currentPosition++] = (charCode & 63) | 128;
 		            }
-		            else if (charCode < 0x10000) {
+		            else if (charCode &lt; 0x10000) {
 					    // 000800-00ffff  1110xxxx 10yyyyyy 10zzzzzz
 		                array[currentPosition++] = (charCode >> 12) | 224;
 		                array[currentPosition++] = ((charCode >> 6) & 63) | 128;
 		                array[currentPosition++] = (charCode & 63) | 128;
 		            }
-		            else if (charCode < 0x110000) {
+		            else if (charCode &lt; 0x110000) {
 		                // 010000-10ffff  11110www 10xxxxxx 10yyyyyy 10zzzzzz
 		                array[currentPosition++] = (charCode >> 18) | 240;
 		                array[currentPosition++] = ((charCode >> 12) & 63) | 128;
@@ -2457,24 +2484,24 @@ else {
 		    
 		    $prototype.encodeAsByteArray = function(str) {
 		    	var bytes = new Array();
-		    	for (var i = 0; i < str.length; i++) {
+		    	for (var i = 0; i &lt; str.length; i++) {
 		            var charCode = str.charCodeAt(i);
-		            if (charCode < 0x80) {
+		            if (charCode &lt; 0x80) {
 		                // 000000-00007f    0zzzzzzz
 		                bytes.push(charCode);
 		            }
-		            else if (charCode < 0x0800) {
+		            else if (charCode &lt; 0x0800) {
 		                // 000080-0007ff    110yyyyy 10zzzzzz
 		                bytes.push((charCode >> 6) | 192);
 		                bytes.push((charCode & 63) | 128);
 		            }
-		            else if (charCode < 0x10000) {
+		            else if (charCode &lt; 0x10000) {
 					    // 000800-00ffff  1110xxxx 10yyyyyy 10zzzzzz
 		                bytes.push((charCode >> 12) | 224);
 		                bytes.push(((charCode >> 6) & 63) | 128);
 		                bytes.push((charCode & 63) | 128);
 		            }
-		            else if (charCode < 0x110000) {
+		            else if (charCode &lt; 0x110000) {
 		                // 010000-10ffff  11110www 10xxxxxx 10yyyyyy 10zzzzzz
 		                bytes.push((charCode >> 18) | 240);
 		                bytes.push(((charCode >> 12) & 63) | 128);
@@ -2492,24 +2519,24 @@ else {
 		    $prototype.encodeByteArray = function(array) {
 		    	var strLen = array.length;
 		    	var bytes = [];
-		    	for (var i = 0; i < strLen; i++) {
+		    	for (var i = 0; i &lt; strLen; i++) {
 		            var charCode = array[i];
-		            if (charCode < 0x80) {
+		            if (charCode &lt; 0x80) {
 		                // 000000-00007f    0zzzzzzz
 		                bytes.push(charCode);
 		            }
-		            else if (charCode < 0x0800) {
+		            else if (charCode &lt; 0x0800) {
 		                // 000080-0007ff    110yyyyy 10zzzzzz
 		                bytes.push((charCode >> 6) | 192);
 		                bytes.push((charCode & 63) | 128);
 		            }
-		            else if (charCode < 0x10000) {
+		            else if (charCode &lt; 0x10000) {
 					    // 000800-00ffff  1110xxxx 10yyyyyy 10zzzzzz
 		                bytes.push((charCode >> 12) | 224);
 		                bytes.push(((charCode >> 6) & 63) | 128);
 		                bytes.push((charCode & 63) | 128);
 		            }
-		            else if (charCode < 0x110000) {
+		            else if (charCode &lt; 0x110000) {
 		                // 010000-10ffff  11110www 10xxxxxx 10yyyyyy 10zzzzzz
 		                bytes.push((charCode >> 18) | 240);
 		                bytes.push(((charCode >> 12) & 63) | 128);
@@ -2528,24 +2555,24 @@ else {
 		        var buf = new Uint8Array(arraybuffer);
 		        var strLen = buf.length;
 		        var bytes = [];
-		    	for (var i = 0; i < strLen; i++) {
+		    	for (var i = 0; i &lt; strLen; i++) {
 		            var charCode = buf[i];
-		            if (charCode < 0x80) {
+		            if (charCode &lt; 0x80) {
 		                // 000000-00007f    0zzzzzzz
 		                bytes.push(charCode);
 		            }
-		            else if (charCode < 0x0800) {
+		            else if (charCode &lt; 0x0800) {
 		                // 000080-0007ff    110yyyyy 10zzzzzz
 		                bytes.push((charCode >> 6) | 192);
 		                bytes.push((charCode & 63) | 128);
 		            }
-		            else if (charCode < 0x10000) {
+		            else if (charCode &lt; 0x10000) {
 					    // 000800-00ffff  1110xxxx 10yyyyyy 10zzzzzz
 		                bytes.push((charCode >> 12) | 224);
 		                bytes.push(((charCode >> 6) & 63) | 128);
 		                bytes.push((charCode & 63) | 128);
 		            }
-		            else if (charCode < 0x110000) {
+		            else if (charCode &lt; 0x110000) {
 		                // 010000-10ffff  11110www 10xxxxxx 10yyyyyy 10zzzzzz
 		                bytes.push((charCode >> 18) | 240);
 		                bytes.push(((charCode >> 12) & 63) | 128);
@@ -2566,7 +2593,7 @@ else {
 	            var decoded = [];
 	            var byte0, byte1, byte2, byte3;
 	            var strLen = str.length;
-	            for (var i = 0; i < strLen; i++) {
+	            for (var i = 0; i &lt; strLen; i++) {
 	                byte0 = (str.charCodeAt(i) & 255);
 	                var byteCount = charByteCount(byte0);
 	                
@@ -2584,7 +2611,7 @@ else {
 	                        i++;
 	                        byte1 = (str.charCodeAt(i) & 255);
 	                        
-	                        charCode = ((byte0 & 31) << 6) | (byte1 & 63);
+	                        charCode = ((byte0 & 31) &lt;&lt; 6) | (byte1 & 63);
 	                        break;
 	                    case 3:
 	                        // 000800-00ffff    1110xxxx 10yyyyyy 10zzzzzz
@@ -2594,7 +2621,7 @@ else {
 	                        i++;
 	                        byte2 = (str.charCodeAt(i) & 255);
 	                        
-	                        charCode = ((byte0 & 15) << 12) | ((byte1 & 63) << 6) | (byte2 & 63);
+	                        charCode = ((byte0 & 15) &lt;&lt; 12) | ((byte1 & 63) &lt;&lt; 6) | (byte2 & 63);
 	                        break;
 	                    case 4:
 	                        // 010000-10ffff    11110www 10xxxxxx 10yyyyyy 10zzzzzz
@@ -2607,7 +2634,7 @@ else {
 	                        i++;
 	                        byte3 = (str.charCodeAt(i) & 255);
 	                        
-	                        charCode = ((byte0 & 7) << 18) | ((byte1 & 63) << 12) | ((byte2 & 63) << 6) | (byte3 & 63);
+	                        charCode = ((byte0 & 7) &lt;&lt; 18) | ((byte1 & 63) &lt;&lt; 12) | ((byte2 & 63) &lt;&lt; 6) | (byte3 & 63);
 	                        break;
 	                }
 	                decoded.push(charCode & 255);
@@ -2952,7 +2979,7 @@ $prototype.removeEventListener = function(type, listener) {
     var listeners = this._eventListeners[type];
     if (listeners) {
         var newListeners = [];
-        for (var i=0; i<listeners.length; i++) {
+        for (var i=0; i&lt;listeners.length; i++) {
             if (listeners[i] !== listener) {
                 newListeners.push(listeners[i]);
             }
@@ -2992,7 +3019,7 @@ $prototype.dispatchEvent = function(e) {
     var listeners = this._eventListeners[e.type];
     // if there are any listeners registered for this event type
     if (listeners) {
-        for (var i=0; i<listeners.length; i++) {
+        for (var i=0; i&lt;listeners.length; i++) {
             listeners[i](e);
         }
     }
@@ -3013,8 +3040,8 @@ $module.EventDispatcher = EventDispatcher;
  */
 
 /**
- * <b>Application developers should use AmqpClientFactory.createAmqpClient() 
- * function to create an instance of AmqpClient.</b>
+ * &lt;b>Application developers should use AmqpClientFactory.createAmqpClient() 
+ * function to create an instance of AmqpClient.&lt;/b>
  *
  * AmqpClient is used to connect to the end-point that handles AMQP 0-9-1
  * protocol over WebSocket.
@@ -3024,9 +3051,9 @@ $module.EventDispatcher = EventDispatcher;
  *
  * @class  AmqpClient models the CONNECTION class defined in AMQP 0-9-1 protocol
  * by abstracting the methods defined in the protocol and exposing a far simpler 
- * API. <b>Application developers should use 
- * <code>AmqpClientFactory#createAmqpClient()</code> function to create an 
- * instance of AmqpClient.</b>
+ * API. &lt;b>Application developers should use 
+ * &lt;code>AmqpClientFactory#createAmqpClient()&lt;/code> function to create an 
+ * instance of AmqpClient.&lt;/b>
  *
  */
 var AmqpClient = function(factory) {
@@ -3097,9 +3124,9 @@ _prototype.addState = function(stateName, ruleList, entryBehavior, exitBehavior)
     // build associative lookup of states by name
     state.rules = {};
     var rules = ruleList || [];
-    for (var i=0; i<rules.length; i++) {
+    for (var i=0; i&lt;rules.length; i++) {
         var rule = rules[i];
-        for (var j=0; j<rule.inputs.length; j++) {
+        for (var j=0; j&lt;rule.inputs.length; j++) {
             var input = rule.inputs[j];
             state.rules[input] = rule.targetState;
         }
@@ -4066,7 +4093,7 @@ var _encodeAuthAmqPlain = function(username, password) {
 
     var len = bytes.remaining();
     var chars = [];
-    for (var i=0; i<len; i++) {
+    for (var i=0; i&lt;len; i++) {
         chars.push(String.fromCharCode(bytes.getUnsigned()));
     }
     return chars.join("");
@@ -4093,7 +4120,7 @@ var _encodeAuthPlain = function(username, password) {
 AmqpBuffer.prototype.getLongString = function() {
     var len = this.getUnsignedInt();
     var chars = [];
-    for (var i=0; i<len; i++) {
+    for (var i=0; i&lt;len; i++) {
         chars.push(String.fromCharCode(this.getUnsigned()));
     }
     return chars.join("");
@@ -4102,7 +4129,7 @@ AmqpBuffer.prototype.getLongString = function() {
 AmqpBuffer.prototype.getShortString = function() {
     var len = this.getUnsigned();
     var chars = [];
-    for (var i=0; i<len; i++) {
+    for (var i=0; i&lt;len; i++) {
         chars.push(String.fromCharCode(this.getUnsigned()));
     }
     return chars.join("");
@@ -4187,7 +4214,7 @@ AmqpBuffer.prototype.putBit = function(v) {
     //log2("bit counter was: ", this.bitCount);
     if (this.bitCount > 0) {
         var lastByte = this.array[this.position-1];
-        lastByte = v << this.bitCount | lastByte;
+        lastByte = v &lt;&lt; this.bitCount | lastByte;
         this.array[this.position-1] = lastByte;
         //log2("last byte was", lastByte);
     } else {
@@ -4224,7 +4251,7 @@ AmqpBuffer.prototype.putTimestamp = function(v) {
 AmqpBuffer.prototype.getTimestamp = function(v) {
     var bytes = this.getBytes(8);
     var val = 0;
-    for(var i = 0; i < 8; i++) {
+    for(var i = 0; i &lt; 8; i++) {
         val = val * 256 + (bytes[i] & 0xff);
     }
     return new Date(val);
@@ -4232,14 +4259,14 @@ AmqpBuffer.prototype.getTimestamp = function(v) {
 
 AmqpBuffer.prototype.putLongString = function(s) {
     this.putUnsignedInt(s.length);
-    for (var i=0; i<s.length; i++) {
+    for (var i=0; i&lt;s.length; i++) {
         this.putUnsigned(s.charCodeAt(i));
     }
 };
 
 AmqpBuffer.prototype.putShortString = function(s) {
     this.putUnsigned(s.length);
-    for (var i=0; i<s.length; i++) {
+    for (var i=0; i&lt;s.length; i++) {
         this.putUnsigned(s.charCodeAt(i));
     }
 };
@@ -4257,7 +4284,7 @@ AmqpBuffer.prototype.putTable = function(table) {
 
 
     var bytes = new AmqpBuffer();
-    for (var i=0; i<table.length; i++) {
+    for (var i=0; i&lt;table.length; i++) {
         var entry = table[i];
         bytes.putShortString(entry.key);
         bytes.putTypeIdentifier(entry.type);
@@ -4414,7 +4441,7 @@ AmqpBuffer.prototype.putHeartbeat = function() {
  * Encodes arguments given a method's parameter list and the provided arguments
  */
 AmqpBuffer.prototype.putMethodArguments = function(args, formalParams) {
-    for (var i=0; i<formalParams.length; i++) {
+    for (var i=0; i&lt;formalParams.length; i++) {
         var p = formalParams[i];
         // lookup type
         var dtype = p.type;
@@ -4438,7 +4465,7 @@ AmqpBuffer.prototype.putMethodArguments = function(args, formalParams) {
  */
 AmqpBuffer.prototype.getMethodArguments = function(params) {
     var values = [];
-    for (var i=0; i<params.length; i++) {
+    for (var i=0; i&lt;params.length; i++) {
         var p = params[i];
         // lookup type
         var dtype = p.type;
@@ -4509,7 +4536,7 @@ AmqpBuffer.prototype.getContentProperties = function() {
 
     // 16 is the size of the unsigned short integer in which content properties
     // are packed
-    for (var i=0; i<=16; i++) {
+    for (var i=0; i&lt;=16; i++) {
         var bit = (packedPropertyFlags >> (i)) & 0x01;
         if (bit) {
             // remember the index of any set flags
@@ -4518,7 +4545,7 @@ AmqpBuffer.prototype.getContentProperties = function() {
     }
     // After the content property flags are read, we know which properties
     // to read.
-    for (var i=0; i<propertyFlags.length; i++) {
+    for (var i=0; i&lt;propertyFlags.length; i++) {
             var k = 16 - propertyFlags[i];
             var propertyName = _basicProperties[k].name;
             var propertyDomain = _basicProperties[k].domain;
@@ -4539,7 +4566,7 @@ AmqpBuffer.prototype.putContentProperties = function(contentProperties) {
     var packedPropertyFlags = 0x00;
 
     var properties = [];
-    for (var i=0; i<_basicProperties.length; i++) {
+    for (var i=0; i&lt;_basicProperties.length; i++) {
         var propertyName = _basicProperties[i].name;
         var domain = _basicProperties[i].domain;
         var propertyValue = contentProperties[propertyName];
@@ -4547,10 +4574,10 @@ AmqpBuffer.prototype.putContentProperties = function(contentProperties) {
         if (typeof(propertyValue) !== "undefined") {
             properties.push({"propertyName" : propertyName, "propertyValue" : propertyValue, "domain" : domain});
             // shift and write property flag as bit
-            packedPropertyFlags = packedPropertyFlags << 1 | 0x1;
+            packedPropertyFlags = packedPropertyFlags &lt;&lt; 1 | 0x1;
         } else {
             // just shift
-            packedPropertyFlags = packedPropertyFlags << 1;
+            packedPropertyFlags = packedPropertyFlags &lt;&lt; 1;
         }
 
 
@@ -4559,14 +4586,14 @@ AmqpBuffer.prototype.putContentProperties = function(contentProperties) {
     // There are 14 properties in AMQP 0-9-x
     //  and the continue bit will always be false
     //  always shift 2
-    packedPropertyFlags = packedPropertyFlags << 2;
+    packedPropertyFlags = packedPropertyFlags &lt;&lt; 2;
 
 
     // write out the property flags
     this.putUnsignedShort(packedPropertyFlags);
     
     // write each property
-    for (var i=0; i<properties.length; i++) {
+    for (var i=0; i&lt;properties.length; i++) {
         var property = properties[i];
         var propertyDomain = property.domain;
         this.putArgument(propertyDomain, property.propertyValue);
@@ -4580,8 +4607,8 @@ AmqpBuffer.prototype.putContentProperties = function(contentProperties) {
 
 
 /**
- * <b>Application developers should use AmqpClientFactory.createAmqpClient() 
- * function to create an instance of AmqpClient.</b>
+ * &lt;b>Application developers should use AmqpClientFactory.createAmqpClient() 
+ * function to create an instance of AmqpClient.&lt;/b>
  *
  * AmqpClient is used to connect to the end-point that handles AMQP 0-9-1
  * protocol over WebSocket.
@@ -4591,9 +4618,9 @@ AmqpBuffer.prototype.putContentProperties = function(contentProperties) {
  *
  * @class  AmqpClient models the CONNECTION class defined in AMQP 0-9-1 protocol
  * by abstracting the methods defined in the protocol and exposing a far simpler 
- * API. <b>Application developers should use 
- * <code>AmqpClientFactory#createAmqpClient()</code> function to create an 
- * instance of AmqpClient.</b>
+ * API. &lt;b>Application developers should use 
+ * &lt;code>AmqpClientFactory#createAmqpClient()&lt;/code> function to create an 
+ * instance of AmqpClient.&lt;/b>
  *
  */
 
@@ -4812,25 +4839,25 @@ _prototype.connect = function connect(url, virtualHost, credentials, callback) {
  * Connects to the AMQP broker at the given URL with given credentials using
  * Configuration style API with named parameters/properties.
  * 
- * <p> For example, the developers should use this function as shown below:
- * <pre>
+ * &lt;p> For example, the developers should use this function as shown below:
+ * &lt;pre>
  *   var client = new AmqpClient();
  *   var config = {url: 'ws://localhost:8001/amqp',
  *                 virtualHost: '/',
  *                 credentials: {username: 'guest', password: 'guest'}
  *                };
  *   client.connect(config, openHandler);
- * </pre>
+ * &lt;/pre>
  * 
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           url: 'url_str_value', 
  *                           virtualHost: 'vh_str_value', 
  *                           credentials: {username: 'uname_str_value', 
  *                                         password: 'passwd_str_value'}
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  *  
  *  Note that 'url', 'virtualHost' and 'credentials' are required properties
  *  and valid values must be passed in. A JavaScript error is thrown if the
@@ -4962,7 +4989,7 @@ var _socketCloseHandler = function(client) {
 
 
 var compareStringToBuffer = function (s, b) {
-    if (b.remaining() < s.length) {
+    if (b.remaining() &lt; s.length) {
         return false;
     } else {
         var lim = b.limit;
@@ -6022,7 +6049,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6080,7 +6107,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6148,7 +6175,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6257,7 +6284,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6324,7 +6351,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6397,7 +6424,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6468,7 +6495,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6533,7 +6560,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6599,7 +6626,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6668,7 +6695,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6739,7 +6766,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6811,7 +6838,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6879,7 +6906,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -6951,7 +6978,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -7019,7 +7046,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -7087,7 +7114,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -7153,7 +7180,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -7215,7 +7242,7 @@ AmqpChannel.prototype.onreject = function(e) {};
       //
       // This logic can be removed if a noack field is added to the codegen model
       var hasnowait = false;
-          for (var i=0; i<amqpMethod.allParameters.length; i++) {
+          for (var i=0; i&lt;amqpMethod.allParameters.length; i++) {
               var argname = amqpMethod.allParameters[i].name;
               if (argname = "noWait") {
                   hasnowait = true;
@@ -7434,35 +7461,35 @@ delete AmqpChannel.prototype.closeOkChannel;
  * exception, the sender provides the class and method id of the method which
  * caused the exception.
  * 
- * <p> AmqpChannel.closeChannel() function that supports named parameters or 
+ * &lt;p> AmqpChannel.closeChannel() function that supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
- * <pre>
+ * &lt;pre>
  *     var channel = ...;
  *     var config = {replyCode: int1, 
  *                   replyText, 'foo', 
  *                   classId: int2,
  *                   methodId: int3};
  *     channel.closeChannel(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                        {
  *                          replyCode: int_value,
  *                          replyText: 'str_value',
  *                          classId: int_value,
  *                          methodId: int_value
  *                        }
- *                        </pre>
+ *                        &lt;/pre>
  * Default values are as follows: 
- *                        <pre>
+ *                        &lt;pre>
  *                          replyCode  --  0
  *                          replyText  --  "" 
  *                          classId    --  0
  *                          methodId   --  0
  *                          callback   -- undefined
- *                        </pre>
+ *                        &lt;/pre>
  * 'callback' specifies a function to be called on success.
  * 
  * @param {Function} callback   Optional param specifies the function that is 
@@ -7512,17 +7539,17 @@ AmqpChannel.prototype.closeChannel = function(config, callback) {
  * This method creates an exchange if it does not already exist, and if the 
  * exchange exists, verifies that it is of the correct and expected class.
  * 
- * <p> AmqpChannel.declareExchange() function supports named parameters or 
+ * &lt;p> AmqpChannel.declareExchange() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {exchange: myExchangeName, type: 'direct'};
  *    channel.declareExchange(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           exchange: 'str_value',
  *                           type: 'direct'|'fanout'|'headers'|'topic',
@@ -7531,7 +7558,7 @@ AmqpChannel.prototype.closeChannel = function(config, callback) {
  *                           noWait: true|false,
  *                           args: {  }
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * 'exchange' specifies the name of the exchange and is a required param. The
  * legal values of the required 'type' param are 'direct', 'fanout', 'headers', 
  * and 'topic' Boolean params 'passive', 'durable', and 'noWait' have a default
@@ -7592,24 +7619,24 @@ AmqpChannel.prototype.declareExchange = function(config, callback) {
  * This method deletes an exchange. When an exchange is deleted all queue 
  * bindings on the exchange are cancelled.
  * 
- * <p> AmqpChannel.deleteExchange() function supports named parameters or 
+ * &lt;p> AmqpChannel.deleteExchange() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {exchange: myExchangeName, noWait: false};
  *    channel.deleteExchange(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           exchange: 'exchange_name_str_value',
  *                           ifUnused: true|false,
  *                           noWait: true|false
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Required parameter 'exchange' specifies the name of the exchange. Default 
  * values of the optional boolean parameters 'ifUnused' and 'noWait' is false.
  * 
@@ -7656,18 +7683,18 @@ AmqpChannel.prototype.deleteExchange = function(config, callback) {
  * can specify various properties that control the durability of the queue and 
  * its contents, and the level of sharing for the queue.
  *
- * <p> AmqpChannel.declareQueue() function supports named parameters or 
+ * &lt;p> AmqpChannel.declareQueue() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {queue: myQueueName, exclusive: false};
  *    channel.declareQueue(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           queue: 'queue_name_str_value',
  *                           passive: true|false,
@@ -7677,7 +7704,7 @@ AmqpChannel.prototype.deleteExchange = function(config, callback) {
  *                           noWait: true|false,
  *                           args: { }
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Required parameter 'queue' specifies the queue name. Boolean parameters
  * 'passive', 'durable', 'noWait', 'exclusive' and 'autoDelete' are optional 
  * with false as the default value. Param 'args' is an optional param that 
@@ -7742,22 +7769,22 @@ AmqpChannel.prototype.declareQueue = function(config, callback) {
  * are bound to a direct exchange and subscription queues are bound to a topic
  * exchange. Developers should invoke this function as shown below:
  * 
- * <p> AmqpChannel.bindQueue() function supports named parameters or 
+ * &lt;p> AmqpChannel.bindQueue() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {queue: myQueueName, 
  *                  exchange: myExchangeName,
  *                  routingKey: key};
  *    channel.bindQueue(config, callback);
- * </pre>
+ * &lt;/pre>
  *
- * <p> 
+ * &lt;p> 
  * 
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           queue: 'queue_name_str_value',
  *                           exchange: 'exchange_name_str_value',
@@ -7765,7 +7792,7 @@ AmqpChannel.prototype.declareQueue = function(config, callback) {
  *                           noWait: true|false,
  *                           args: { }
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Required parameter 'queue' specifies the queue name. Required parameter
  * 'exchange' specifies the exchange name. Required parameter 'routingKey'
  * specifies the key to be used to bind the queue to the exchange. Boolean
@@ -7819,25 +7846,25 @@ AmqpChannel.prototype.bindQueue = function(config, callback) {
 /**
  * This method unbinds a queue from an exchange.
  * 
- * <p> AmqpChannel.unbindQueue() function supports named parameters or 
+ * &lt;p> AmqpChannel.unbindQueue() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {queue: myQueueName, exchange: exchangeName, routingKey: key};
  *    channel.unbindQueue(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           queue: 'queue_name_str_value',
  *                           exchange: 'exchange_name_str_value',
  *                           routingKey: 'routingKey_str_value',
  *                           args: { }
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Required parameter 'queue' specifies the queue name. Required parameter
  * 'exchange' specifies the exchange name. Required parameter 'routingKey'
  * specifies the key that was used to bind the queue to the exchange. Parameter 
@@ -7887,23 +7914,23 @@ AmqpChannel.prototype.unbindQueue = function(config, callback) {
  * This method removes all messages from a queue which are not awaiting
  * acknowledgment.
  * 
- * <p> AmqpChannel.purgeQueue() function supports named parameters or 
+ * &lt;p> AmqpChannel.purgeQueue() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {queue: myQueueName};
  *    channel.purgeQueue(config, callback);
- * </pre>
+ * &lt;/pre>
  * 
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           queue: 'queue_name_str_value',
  *                           noWait: true|false
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Required parameter 'queue' specifies the queue name. Boolean parameter 
  * 'noWait' is optional with false as the default value.
  *
@@ -7945,15 +7972,15 @@ AmqpChannel.prototype.purgeQueue = function(config, callback) {
  * are sent to a dead-letter queue if this is defined in the server configuration, 
  * and all consumers on the queue are cancelled.
  *
- * <p> AmqpChannel.deleteQueue() function supports named parameters or 
+ * &lt;p> AmqpChannel.deleteQueue() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {queue: myQueueName, ifEmpty: true};
  *    channel.deleteQueue(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
  *                        {
@@ -8015,24 +8042,24 @@ AmqpChannel.prototype.deleteQueue = function(config, callback) {
  * semantics. Though the qos method could in principle apply to both peers, it 
  * is currently meaningful only for the server.
  * 
- * <p> AmqpChannel.qosBasic() function supports named parameters or 
+ * &lt;p> AmqpChannel.qosBasic() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {prefetchSize: size, prefetchCount: count, global: true};
  *    channel.qosBasic(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           prefetchSize: size_long_value_in_octets,
  *                           prefetchCount: count_short_value_in_octets,
  *                           global: true|false
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Parameter 'prefetchSize' and 'prefetchCount' are required. Boolean parameter
  * 'global' is optional with false as the default value.
  *
@@ -8079,21 +8106,21 @@ AmqpChannel.prototype.qosBasic = function(config, callback) {
  * request for messages from a specific queue. Consumers last as long as the 
  * channel they were declared on, or until the client cancels them.
  * 
- * <p> AmqpChannel.consumeBasic() function supports named parameters or 
+ * &lt;p> AmqpChannel.consumeBasic() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {queue: myQueueName, 
  *                  consumerTag: clientTag, 
  *                  exclusive: false,
  *                  noLocal: true};
  *    channel.consumeBasic(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           queue: 'queue_name_str_value',
  *                           consumerTag: 'consumer_tag_str_value',
@@ -8103,12 +8130,12 @@ AmqpChannel.prototype.qosBasic = function(config, callback) {
  *                           noWait: true|false,
  *                           args: { }
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  *
  * Required parameter 'queue' specifies the queue name. Parameter
  * 'consumerTag' is required. Boolean parameters 'noLocal', 'noWait', and
  * 'exclusive' are optional with false as the default value. 
- *<p>
+ *&lt;p>
  * Boolean parameter 'noAck' is optional with default value of true. If noAck is 
  * true, the broker will not expect any acknowledgement from the client before
  * discarding the message. If noAck is false, then the broker will expect an
@@ -8116,7 +8143,7 @@ AmqpChannel.prototype.qosBasic = function(config, callback) {
  * false, then it's developers responsibility to explicitly acknowledge the
  * received message using AmqpChannel.ackBasic() as shown below: 
  * 
- * <pre>
+ * &lt;pre>
  * var handleMessageReceived = function(event) {
  *    ....
  *    var props = event.properties;
@@ -8132,7 +8159,7 @@ AmqpChannel.prototype.qosBasic = function(config, callback) {
  *                channel.ackBasic(config);
  *              }, 0);
  * }
- * </pre>
+ * &lt;/pre>
  *
  * Parameter 'args' is optional and can be used to pass in additional properties
  * for declaration.
@@ -8201,25 +8228,25 @@ AmqpChannel.prototype.consumeBasic = function(config, callback) {
  * that consumer. The client may receive an arbitrary number of messages in
  * between sending the cancel method and receiving the cancel-ok reply.
  * 
- * <p> AmqpChannel.cancelBasic() function supports named parameters or 
+ * &lt;p> AmqpChannel.cancelBasic() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {consumerTag: clientTag, noWait: true};
  *    channel.cancelBasic(config, callback);
- * </pre>
+ * &lt;/pre>
  *
- * <p> 
+ * &lt;p> 
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           consumerTag: 'consumer_tag_str_value',
  *                           noWait: true|false
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Required parameter consumerTag' is required. Boolean parameters 'noWait' is 
  * optional with false as the default value.
  *
@@ -8260,11 +8287,11 @@ AmqpChannel.prototype.cancelBasic = function(config, callback) {
  * be routed to queues as defined by the exchange configuration and distributed
  * to any active consumers when the transaction, if any, is committed.
  * 
- * <p> AmqpChannel.publishBasic() function supports named parameters or 
+ * &lt;p> AmqpChannel.publishBasic() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var props = new AmqpProperties();
  *    props.setMessageId("msgId1");
@@ -8273,10 +8300,10 @@ AmqpChannel.prototype.cancelBasic = function(config, callback) {
  *                  exchange: myExchangeName, 
  *                  routingKey: key};
  *    channel.publishBasic(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           body: ArrayBuffer_or_ByteBuffer_instance,
  *                           properties: AmqpProperties_instance,
@@ -8285,7 +8312,7 @@ AmqpChannel.prototype.cancelBasic = function(config, callback) {
  *                           mandatory: true|false,
  *                           immediate: true|false
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Required parameter 'body' takes an instance of either ArrayBuffer or 
  * ByteBuffer. Newer browsers support ArrayBuffer. However, developers can
  * continue to support older browsers by specify a ByteBuffer payload as 'body'.
@@ -8365,22 +8392,22 @@ AmqpChannel.prototype.publishBasic = function(config, callback) {
  * synchronous dialogue that is designed for specific types of application 
  * where synchronous functionality is more important than performance.
  * 
- * <p> AmqpChannel.getBasic() function supports named parameters or 
+ * &lt;p> AmqpChannel.getBasic() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {queue: myQueueName, noAck: true};
  *    channel.getBasic(config, callback);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           queue: 'queue_name_str_value',
  *                           noAck: true|false
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Required parameter 'queue' specifies the queue name. Boolean parameter 
  * 'noAck' is optional with false as the default value.
  * 
@@ -8421,23 +8448,23 @@ AmqpChannel.prototype.getBasic = function(config, callback) {
  * or Get-Ok methods. The client can ask to confirm a single message or a set of 
  * messages up to and including a specific message.
  * 
- * <p> AmqpChannel.ackBasic() function supports named parameters or 
+ * &lt;p> AmqpChannel.ackBasic() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
  * 
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {deliveryTag: dt, multiple: true};
  *    channel.ackBasic(config);
- * </pre>
+ * &lt;/pre>
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           deliveryTag: dt_num_value,
  *                           multiple: true|false
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Parameter 'deliveryTag' is required. Boolean parameter 'multiple' is optional
  * with false as the default value.
  *                              
@@ -8475,26 +8502,26 @@ AmqpChannel.prototype.ackBasic = function(config) {
  * This is the overloaded form of AmqpChannel.rejectBasic() function that 
  * named parameters or arguments using the Configuration object.
  * 
- * <p> AmqpChannel.rejectBasic() function supports named parameters or 
+ * &lt;p> AmqpChannel.rejectBasic() function supports named parameters or 
  * arguments using the Configuration object. Developers must invoke this 
  * function as shown below:
- * <pre>
+ * &lt;pre>
  *    var channel = ...;
  *    var config = {deliveryTag: dt, requeue: true};
  *    channel.rejectBasic(config);
- * </pre>
+ * &lt;/pre>
  *
  * This method allows a client to reject a message. It can be used to interrupt 
  * and cancel large incoming messages, or return untreatable messages to their 
  * original queue.
  *
  * @param {Configuration} config    Format is as shown below:
- *                        <pre>
+ *                        &lt;pre>
  *                         {
  *                           deliveryTag: dt_num_value,
  *                           requeue: true|false
  *                         }
- *                        </pre>
+ *                        &lt;/pre>
  * Parameter 'deliveryTag' is required. Boolean parameter 'requeue' is optional
  * with false as the default value.
  *                              
@@ -8571,14 +8598,14 @@ ActionList.prototype._processActions = function _processActions() {
  * Executes all the actions in the actionList
  */
 ActionList.prototype._processAllActions = function _processAllActions() {
-    for (i=0; i < this._replayLength; i++) {
+    for (i=0; i &lt; this._replayLength; i++) {
         var action = this._actionList[i];
         action.func.apply(action.object, action.args);
     }
 };
 
 ActionList.prototype._processAllNewActions = function _processAllNewActions() {
-    for (i=this._replayLength; i < this._actionList.length; i++) {
+    for (i=this._replayLength; i &lt; this._actionList.length; i++) {
         var action = this._actionList[i];
         action.func.apply(action.object, action.args);
     }
@@ -8704,7 +8731,7 @@ AmqpArguments.prototype = new Array();
      */
     $prototype.toString = function() {
         var buffer = [];
-        for (var i = 0; i < this.length; i++) {
+        for (var i = 0; i &lt; this.length; i++) {
             if (this[i].key != null) {
                 buffer.push("{key:" + this[i].key + ", value:" + this[i].value + ", type:" + this[i].type + "}");
             }
@@ -8725,7 +8752,7 @@ AmqpArguments.prototype = new Array();
 
 /**
  * Creates an AmqpProperties instance.  
- * <p>
+ * &lt;p>
  * The value of the "headers" property is of type AmqpArguments. Kaazing
  * AMQP implementation uses AmqpArguments to encode the "table". Similarly,
  * Kaazing AMQP implementation decodes the "table" and constructs an instance
@@ -8752,7 +8779,7 @@ var AmqpProperties = function(headers) {
         // AmqpBuffer.basicProperties.
         for (var prop in headers) {
             propFound = false;
-            for (var i = 0; i <_basicProperties.length; i++) {
+            for (var i = 0; i &lt;_basicProperties.length; i++) {
                 if (prop == _basicProperties[i].name) {
                     // Move to the next prop in the set.
                     propFound = true;
@@ -8827,7 +8854,7 @@ var AmqpProperties = function(headers) {
                     throw new Error(s);
                 }
                     
-                if ((propValue < 0) || (propValue > 9)) {
+                if ((propValue &lt; 0) || (propValue > 9)) {
                     var s = "Invalid value: Value of property '" + propName +
                     "' should be between 0 and 9";
                     throw new Error(s);
@@ -9205,7 +9232,7 @@ var AmqpProperties = function(headers) {
             throw new Error(s);
         }
         
-        if ((priority < 0) || (priority > 9)) {
+        if ((priority &lt; 0) || (priority > 9)) {
             s = "AMQP 0-9-1 spec mandates 'priority' value to be between 0 and 9";
             throw new Error(s);
         }
@@ -9389,7 +9416,7 @@ var AmqpProperties = function(headers) {
             pull out method arguments into a dictionary with arg name and value
         */
         this.args = {};
-        for (var i=0; i<frame.args.length; i++) {
+        for (var i=0; i&lt;frame.args.length; i++) {
             this.args[frame.args[i].name] = frame.args[i].value;
         }
     
@@ -9435,7 +9462,7 @@ var AmqpProperties = function(headers) {
     $prototype.message;
 
     /**
-     * This has been <b>deprecated</b>. Please use the 'properties' field to 
+     * This has been &lt;b>deprecated&lt;/b>. Please use the 'properties' field to 
      * retrieve AMQP 0-9-1 properties included with the message.
      *
      * @public
@@ -9593,3 +9620,26 @@ var AmqpClientFactory = function() {
     $module.AmqpClientFactory = AmqpClientFactory;
 
 })(window || Kaazing.AMQP);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AmqpArguments.html">AmqpArguments</a></li><li><a href="AmqpClient.html">AmqpClient</a></li><li><a href="AmqpClientFactory.html">AmqpClientFactory</a></li><li><a href="AmqpEvent.html">AmqpEvent</a></li><li><a href="AmqpProperties.html">AmqpProperties</a></li><li><a href="EventDispatcher.html">EventDispatcher</a></li><li><a href="URI.html">URI</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Kaazing">Kaazing</a></li><li><a href="global.html#Logger">Logger</a></li><li><a href="global.html#ULOG">ULOG</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Wed Dec 10 2014 21:02:32 GMT-0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

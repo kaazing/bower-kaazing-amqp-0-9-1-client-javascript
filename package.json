@@ -1,6 +1,6 @@
 {
     "name": "kaazing-amqp-0-9-1-client-javascript",
-    "version": "5.0.0-2",
+    "version": "5.0.0-3",
     "description": "Amqp 0.9.1 javascript library.",
     "repository": {
         "type": "git",
