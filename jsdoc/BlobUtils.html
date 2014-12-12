@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Global</title>
+    <title>JSDoc: Class: BlobUtils</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Class: BlobUtils</h1>
     
     
 
@@ -27,8 +27,12 @@
     
 <header>
     <h2>
-    
+    BlobUtils
     </h2>
+    
+        <div class="class-description">BlobUtils is a portable, cross-browser utility library for working
+    with Blob instances.
+    See <a href="./Blob.html">Blob</a>.</div>
     
 </header>  
 
@@ -38,87 +42,21 @@
     
     
         
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <h3 class="subsection-title">Members</h3>
-        
-        <dl>
-            
 <dt>
-    <h4 class="name" id="ULOG"><span class="type-signature"></span>ULOG<span class="type-signature"></span></h4>
+    <h4 class="name" id="BlobUtils"><span class="type-signature"></span>new BlobUtils<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
 <dd>
     
-    <div class="description">
-        Copyright (c) 2007-2014 Kaazing Corporation. All rights reserved.
+    
 
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
-    </div>
     
     
     
-
+    
+    
+    
     
 <dl class="details">
     
@@ -142,7 +80,7 @@ under the License.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line285">line 285</a>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line2583">line 2583</a>
     </li></ul></dd>
     
     
@@ -155,9 +93,31 @@ under the License.
 
     
     
+
+    
+
+    
+    
+    
+    
+    
+    
+    
 </dd>
 
-        </dl>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -166,7 +126,7 @@ under the License.
         <dl>
             
 <dt>
-    <h4 class="name" id="postMessage0"><span class="type-signature"></span>postMessage0<span class="signature">(target, message, origin)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="asBinaryString"><span class="type-signature">&lt;static> </span>asBinaryString<span class="signature">(callback, blob)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
     
 </dt>
@@ -174,8 +134,10 @@ under the License.
     
     
     <div class="description">
-        Provides an emulation of HTML5 window.postMessage, 
-leveraging the native implementation if available.
+        Reads a string from a Blob and passes it as a parameter to the specified 
+    callback function.
+    Each character in the resulting string has a character code equal to the
+    unsigned byte value of the corresponding byte in the Blob.
     </div>
     
 
@@ -209,13 +171,13 @@ leveraging the native implementation if available.
 	
         <tr>
             
-                <td class="name"><code>target</code></td>
+                <td class="name"><code>callback</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Window</span>
+<span class="param-type">function</span>
 
 
             
@@ -225,20 +187,20 @@ leveraging the native implementation if available.
             
             
             
-            <td class="description last">the target window to receive messages</td>
+            <td class="description last"></td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>message</code></td>
+                <td class="name"><code>blob</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="Blob.html">Blob</a></span>
 
 
             
@@ -248,30 +210,7 @@ leveraging the native implementation if available.
             
             
             
-            <td class="description last">the message to send to the target window</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>origin</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">the origin of the message</td>
+            <td class="description last"></td>
         </tr>
 	
 	
@@ -302,7 +241,7 @@ leveraging the native implementation if available.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PostMessage-debug.js.html">PostMessage-debug.js</a>, <a href="PostMessage-debug.js.html#line425">line 425</a>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line2698">line 2698</a>
     </li></ul></dd>
     
     
@@ -323,6 +262,24 @@ leveraging the native implementation if available.
     
     
     
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">void</span>
+
+
+	</dd>
+</dl>
+
+        
     
     
 </dd>
@@ -330,7 +287,7 @@ leveraging the native implementation if available.
         
             
 <dt>
-    <h4 class="name" id="postMessage0"><span class="type-signature"></span>postMessage0<span class="signature">(target, message, origin)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="asNumberArray"><span class="type-signature">&lt;static> </span>asNumberArray<span class="signature">(callback, blob)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
     
 </dt>
@@ -338,8 +295,10 @@ leveraging the native implementation if available.
     
     
     <div class="description">
-        Provides an emulation of HTML5 window.postMessage, 
-leveraging the native implementation if available.
+        Read an Array of JavaScript Numbers from a Blob instance and passes it as a
+    parameter to the specified callback function.
+    Each Number is an integer in the range 0..255 equal to the
+    value of the corresponding byte in the Blob.
     </div>
     
 
@@ -373,13 +332,13 @@ leveraging the native implementation if available.
 	
         <tr>
             
-                <td class="name"><code>target</code></td>
+                <td class="name"><code>callback</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Window</span>
+<span class="param-type">function</span>
 
 
             
@@ -389,20 +348,20 @@ leveraging the native implementation if available.
             
             
             
-            <td class="description last">the target window to receive messages</td>
+            <td class="description last"></td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>message</code></td>
+                <td class="name"><code>blob</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="Blob.html">Blob</a></span>
 
 
             
@@ -412,30 +371,7 @@ leveraging the native implementation if available.
             
             
             
-            <td class="description last">the message to send to the target window</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>origin</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">the origin of the message</td>
+            <td class="description last"></td>
         </tr>
 	
 	
@@ -466,7 +402,7 @@ leveraging the native implementation if available.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ServerSentEvents-debug.js.html">ServerSentEvents-debug.js</a>, <a href="ServerSentEvents-debug.js.html#line425">line 425</a>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line2627">line 2627</a>
     </li></ul></dd>
     
     
@@ -487,6 +423,24 @@ leveraging the native implementation if available.
     
     
     
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">void</span>
+
+
+	</dd>
+</dl>
+
+        
     
     
 </dd>
@@ -494,7 +448,7 @@ leveraging the native implementation if available.
         
             
 <dt>
-    <h4 class="name" id="postMessage0"><span class="type-signature"></span>postMessage0<span class="signature">(target, message, origin)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="asString"><span class="type-signature">&lt;static> </span>asString<span class="signature">(blob, start, end)</span><span class="type-signature"> &rarr; {String}</span></h4>
     
     
 </dt>
@@ -502,8 +456,8 @@ leveraging the native implementation if available.
     
     
     <div class="description">
-        Provides an emulation of HTML5 window.postMessage, 
-leveraging the native implementation if available.
+        Reads a UTF-8 string from a Blob.
+    The start and end arguments can be used to subset the Blob.
     </div>
     
 
@@ -537,13 +491,13 @@ leveraging the native implementation if available.
 	
         <tr>
             
-                <td class="name"><code>target</code></td>
+                <td class="name"><code>blob</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Window</span>
+<span class="param-type"><a href="Blob.html">Blob</a></span>
 
 
             
@@ -553,20 +507,20 @@ leveraging the native implementation if available.
             
             
             
-            <td class="description last">the target window to receive messages</td>
+            <td class="description last"></td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>message</code></td>
+                <td class="name"><code>start</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Number</span>
 
 
             
@@ -576,20 +530,20 @@ leveraging the native implementation if available.
             
             
             
-            <td class="description last">the message to send to the target window</td>
+            <td class="description last">optional</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>origin</code></td>
+                <td class="name"><code>end</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Number</span>
 
 
             
@@ -599,7 +553,7 @@ leveraging the native implementation if available.
             
             
             
-            <td class="description last">the origin of the message</td>
+            <td class="description last">optional</td>
         </tr>
 	
 	
@@ -630,7 +584,7 @@ leveraging the native implementation if available.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line2846">line 2846</a>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line2593">line 2593</a>
     </li></ul></dd>
     
     
@@ -651,6 +605,28 @@ leveraging the native implementation if available.
     
     
     
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    the decoded string
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">String</span>
+
+
+	</dd>
+</dl>
+
+        
     
     
 </dd>
@@ -658,7 +634,7 @@ leveraging the native implementation if available.
         
             
 <dt>
-    <h4 class="name" id="postMessage0"><span class="type-signature"></span>postMessage0<span class="signature">(target, message, origin)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="fromBinaryString"><span class="type-signature">&lt;static> </span>fromBinaryString<span class="signature">(byte)</span><span class="type-signature"> &rarr; {<a href="Blob.html">Blob</a>}</span></h4>
     
     
 </dt>
@@ -666,8 +642,7 @@ leveraging the native implementation if available.
     
     
     <div class="description">
-        Provides an emulation of HTML5 window.postMessage, 
-leveraging the native implementation if available.
+        Create a Blob from a Byte string.
     </div>
     
 
@@ -701,30 +676,7 @@ leveraging the native implementation if available.
 	
         <tr>
             
-                <td class="name"><code>target</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Window</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">the target window to receive messages</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>message</code></td>
+                <td class="name"><code>byte</code></td>
             
             
             <td class="type">
@@ -740,30 +692,7 @@ leveraging the native implementation if available.
             
             
             
-            <td class="description last">the message to send to the target window</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>origin</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">the origin of the message</td>
+            <td class="description last">string</td>
         </tr>
 	
 	
@@ -794,7 +723,7 @@ leveraging the native implementation if available.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="XMLHttpRequest-debug.js.html">XMLHttpRequest-debug.js</a>, <a href="XMLHttpRequest-debug.js.html#line425">line 425</a>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line2755">line 2755</a>
     </li></ul></dd>
     
     
@@ -815,6 +744,329 @@ leveraging the native implementation if available.
     
     
     
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    the new Blob instance.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="Blob.html">Blob</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="fromNumberArray"><span class="type-signature">&lt;static> </span>fromNumberArray<span class="signature">(Number)</span><span class="type-signature"> &rarr; {<a href="Blob.html">Blob</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Create a Blob from a Number Array.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>Number</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Array</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line2777">line 2777</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    the new Blob instance.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="Blob.html">Blob</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="fromString"><span class="type-signature">&lt;static> </span>fromString<span class="signature">(string, endings)</span><span class="type-signature"> &rarr; {<a href="Blob.html">Blob</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Create a Blob from a String via UTF-8 encoding.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>endings</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">line ending style: "transparent" or "native"</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line2799">line 2799</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    the new Blob instance.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="Blob.html">Blob</a></span>
+
+
+	</dd>
+</dl>
+
+        
     
     
 </dd>
@@ -841,7 +1093,7 @@ leveraging the native implementation if available.
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Fri Dec 12 2014 22:17:44 GMT-0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Fri Dec 12 2014 22:17:48 GMT-0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

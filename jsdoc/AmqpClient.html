@@ -138,7 +138,7 @@ protocol over WebSocket.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line3032">line 3032</a>
+        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line3035">line 3035</a>
     </li></ul></dd>
     
     
@@ -182,7 +182,7 @@ protocol over WebSocket.
         <dl>
             
 <dt>
-    <h4 class="name" id="onclose"><span class="type-signature">&lt;static> </span>onclose<span class="type-signature"> :function</span></h4>
+    <h4 class="name" id="onclose"><span class="type-signature"></span>onclose<span class="type-signature"> :function</span></h4>
     
     
 </dt>
@@ -228,7 +228,7 @@ protocol over WebSocket.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4627">line 4627</a>
+        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4630">line 4630</a>
     </li></ul></dd>
     
     
@@ -246,7 +246,7 @@ protocol over WebSocket.
         
             
 <dt>
-    <h4 class="name" id="onerror"><span class="type-signature">&lt;static> </span>onerror<span class="type-signature"> :function</span></h4>
+    <h4 class="name" id="onerror"><span class="type-signature"></span>onerror<span class="type-signature"> :function</span></h4>
     
     
 </dt>
@@ -292,7 +292,7 @@ protocol over WebSocket.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4640">line 4640</a>
+        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4643">line 4643</a>
     </li></ul></dd>
     
     
@@ -310,7 +310,7 @@ protocol over WebSocket.
         
             
 <dt>
-    <h4 class="name" id="onopen"><span class="type-signature">&lt;static> </span>onopen<span class="type-signature"> :function</span></h4>
+    <h4 class="name" id="onopen"><span class="type-signature"></span>onopen<span class="type-signature"> :function</span></h4>
     
     
 </dt>
@@ -356,7 +356,7 @@ protocol over WebSocket.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4614">line 4614</a>
+        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4617">line 4617</a>
     </li></ul></dd>
     
     
@@ -380,215 +380,7 @@ protocol over WebSocket.
         <dl>
             
 <dt>
-    <h4 class="name" id="connect"><span class="type-signature">&lt;private, static> </span>connect<span class="signature">(url, virtualHost, credentials, callback)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        /*
-Connects to the AMQP broker at the given URL with given credentials
-    </div>
-    
-
-    
-    
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>url</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Location of AMQP broker</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>virtualHost</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Name of the virtual host</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>credentials</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-|
-
-<span class="param-type">Key</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Login credentials or Key</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">Function to be called on success</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4768">line 4768</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">void</span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="connect"><span class="type-signature">&lt;static> </span>connect<span class="signature">(config, callback)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="connect"><span class="type-signature"></span>connect<span class="signature">(config, callback)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
     
 </dt>
@@ -669,7 +461,8 @@ Configuration style API with named parameters/properties.
  
  Note that 'url', 'virtualHost' and 'credentials' are required properties
  and valid values must be passed in. A JavaScript error is thrown if the
- aforementioned arguments are undefined, null, or empty string.</td>
+ aforementioned arguments are undefined, null, or empty string.
+<p></td>
         </tr>
 	
 	
@@ -692,8 +485,7 @@ Configuration style API with named parameters/properties.
             
             
             
-            <td class="description last">Optional param specifies the function that is 
-                             to be invoked on success.</td>
+            <td class="description last">Optional param specifies the function that is to be invoked on success.</td>
         </tr>
 	
 	
@@ -724,7 +516,7 @@ Configuration style API with named parameters/properties.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4811">line 4811</a>
+        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4814">line 4814</a>
     </li></ul></dd>
     
     
@@ -770,7 +562,7 @@ Configuration style API with named parameters/properties.
         
             
 <dt>
-    <h4 class="name" id="disconnect"><span class="type-signature">&lt;static> </span>disconnect<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="disconnect"><span class="type-signature"></span>disconnect<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
     
     
 </dt>
@@ -778,7 +570,7 @@ Configuration style API with named parameters/properties.
     
     
     <div class="description">
-        Disconnect from the AMQP broker
+        Disconnect from the AMQP broker.
     </div>
     
 
@@ -811,7 +603,7 @@ Configuration style API with named parameters/properties.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4880">line 4880</a>
+        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4882">line 4882</a>
     </li></ul></dd>
     
     
@@ -857,7 +649,7 @@ Configuration style API with named parameters/properties.
         
             
 <dt>
-    <h4 class="name" id="getAmqpClientFactory"><span class="type-signature">&lt;static> </span>getAmqpClientFactory<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="AmqpClientFactory.html">AmqpClientFactory</a>}</span></h4>
+    <h4 class="name" id="getAmqpClientFactory"><span class="type-signature"></span>getAmqpClientFactory<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="AmqpClientFactory.html">AmqpClientFactory</a>}</span></h4>
     
     
 </dt>
@@ -898,7 +690,7 @@ Configuration style API with named parameters/properties.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4927">line 4927</a>
+        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4928">line 4928</a>
     </li></ul></dd>
     
     
@@ -944,7 +736,7 @@ Configuration style API with named parameters/properties.
         
             
 <dt>
-    <h4 class="name" id="openChannel"><span class="type-signature">&lt;static> </span>openChannel<span class="signature">(callback)</span><span class="type-signature"> &rarr; {<a href="AmqpChannel.html">AmqpChannel</a>}</span></h4>
+    <h4 class="name" id="openChannel"><span class="type-signature"></span>openChannel<span class="signature">(callback)</span><span class="type-signature"> &rarr; {<a href="AmqpChannel.html">AmqpChannel</a>}</span></h4>
     
     
 </dt>
@@ -1002,8 +794,7 @@ Configuration style API with named parameters/properties.
             
             
             
-            <td class="description last">Optional param specifies the function that is 
-                             to be invoked on success.</td>
+            <td class="description last">Optional param specifies the function that is to be invoked on success.</td>
         </tr>
 	
 	
@@ -1034,7 +825,7 @@ Configuration style API with named parameters/properties.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4905">line 4905</a>
+        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line4907">line 4907</a>
     </li></ul></dd>
     
     
@@ -1093,13 +884,13 @@ Configuration style API with named parameters/properties.
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AmqpArguments.html">AmqpArguments</a></li><li><a href="AmqpClient.html">AmqpClient</a></li><li><a href="AmqpClientFactory.html">AmqpClientFactory</a></li><li><a href="AmqpEvent.html">AmqpEvent</a></li><li><a href="AmqpProperties.html">AmqpProperties</a></li><li><a href="EventDispatcher.html">EventDispatcher</a></li><li><a href="URI.html">URI</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Kaazing">Kaazing</a></li><li><a href="global.html#Logger">Logger</a></li><li><a href="global.html#ULOG">ULOG</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AmqpArguments.html">AmqpArguments</a></li><li><a href="AmqpChannel.html">AmqpChannel</a></li><li><a href="AmqpClient.html">AmqpClient</a></li><li><a href="AmqpClientFactory.html">AmqpClientFactory</a></li><li><a href="AmqpEvent.html">AmqpEvent</a></li><li><a href="AmqpProperties.html">AmqpProperties</a></li><li><a href="ArrayBuffer.html">ArrayBuffer</a></li><li><a href="BasicChallengeHandler.html">BasicChallengeHandler</a></li><li><a href="Blob.html">Blob</a></li><li><a href="BlobUtils.html">BlobUtils</a></li><li><a href="ChallengeRequest.html">ChallengeRequest</a></li><li><a href="ChallengeResponse.html">ChallengeResponse</a></li><li><a href="CloseEvent.html">CloseEvent</a></li><li><a href="DispatchChallengeHandler.html">DispatchChallengeHandler</a></li><li><a href="EventDispatcher.html">EventDispatcher</a></li><li><a href="EventSource.html">EventSource</a></li><li><a href="HttpRedirectPolicy.html">HttpRedirectPolicy</a></li><li><a href="MessageEvent.html">MessageEvent</a></li><li><a href="NegotiableChallengeHandler.html">NegotiableChallengeHandler</a></li><li><a href="NegotiateChallengeHandler.html">NegotiateChallengeHandler</a></li><li><a href="Oid.html">Oid</a></li><li><a href="PasswordAuthentication.html">PasswordAuthentication</a></li><li><a href="WebSocket.html">WebSocket</a></li><li><a href="WebSocketFactory.html">WebSocketFactory</a></li></ul><h3>Events</h3><ul><li><a href="WebSocket.html#event:close">close</a></li><li><a href="WebSocket.html#event:error">error</a></li><li><a href="WebSocket.html#event:message">message</a></li><li><a href="WebSocket.html#event:open">open</a></li></ul><h3>Global</h3><ul><li><a href="global.html#postMessage0">postMessage0</a></li><li><a href="global.html#ULOG">ULOG</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Wed Dec 10 2014 21:02:34 GMT-0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Fri Dec 12 2014 22:17:46 GMT-0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

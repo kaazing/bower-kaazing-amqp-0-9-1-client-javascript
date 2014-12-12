@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: AmqpArguments</title>
+    <title>JSDoc: Class: DispatchChallengeHandler</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Class: AmqpArguments</h1>
+    <h1 class="page-title">Class: DispatchChallengeHandler</h1>
     
     
 
@@ -27,10 +27,8 @@
     
 <header>
     <h2>
-    AmqpArguments
+    DispatchChallengeHandler
     </h2>
-    
-        <div class="class-description">AmqpArguments</div>
     
 </header>  
 
@@ -41,7 +39,7 @@
     
         
 <dt>
-    <h4 class="name" id="AmqpArguments"><span class="type-signature"></span>new AmqpArguments<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="DispatchChallengeHandler"><span class="type-signature"></span>new DispatchChallengeHandler<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -49,7 +47,12 @@
     
     
     <div class="description">
-        AmqpArguments is a table of optional arguments for AMQP commands
+        A <code>DispatchChallengeHandler</code> is responsible for dispatching challenge requests
+to appropriate challenge handlers when challenges
+arrive from specific URI locations in challenge responses.
+
+<p>This allows clients to use specific challenge handlers to handle specific
+types of challenges at different URI locations.</p>
     </div>
     
 
@@ -82,7 +85,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line8629">line 8629</a>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line6290">line 6290</a>
     </li></ul></dd>
     
     
@@ -128,7 +131,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="addInteger"><span class="type-signature"></span>addInteger<span class="signature">(key, value)</span><span class="type-signature"> &rarr; {<a href="AmqpArguments.html">AmqpArguments</a>}</span></h4>
+    <h4 class="name" id="register"><span class="type-signature"></span>register<span class="signature">(locationDescription, challengeHandler)</span><span class="type-signature"> &rarr; {ChallengeHandler}</span></h4>
     
     
 </dt>
@@ -136,7 +139,39 @@
     
     
     <div class="description">
-        Adds an integer value to an AmqpArguments table.
+        Register a challenge handler to respond to challenges at one or more locations.
+
+<p>When a challenge response is received for a protected URI, the <code>locationDescription</code>
+matches against elements of the protected URI; if a match is found, one
+consults the challenge handler(s) registered at that <code>locationDescription</code> to find
+a challenge handler suitable to respond to the challenge.</p>
+
+<p>A <code>locationDescription</code> comprises a username, password, host, port and paths,
+any of which can be wild-carded with the <code>*</code> character to match any number of request URIs.
+If no port is explicitly mentioned in a <code>locationDescription</code>, a default port will be inferred
+based on the scheme mentioned in the location description, according to the following table:
+<table border=1>
+    <tr><th>scheme</th><th>default port</th><th>Sample locationDescription</th></tr>
+    <tr><td>http</td><td>80</td><td>foo.example.com or http://foo.example.com</td></tr>
+    <tr><td>ws</td><td>80</td><td>foo.example.com or ws://foo.example.com</td></tr>
+    <tr><td>https</td><td>443</td><td>https://foo.example.com</td></tr>
+    <tr><td>wss</td><td>443</td><td>wss://foo.example.com</td></tr>
+</table>
+</p>
+
+<p>The protocol scheme (e.g. http or ws) if present in <code>locationDescription</code> will not be used to
+match <code>locationDescription</code> with the protected URI, because authentication challenges are
+implemented on top of one of the HTTP/s protocols always, whether one is initiating web socket
+connections or regular HTTP connections.  That is to say for example, the <code>locationDescription</code> <code>foo.example.com</code>
+matches both URIs <code>http://foo.example.com</code> and <code>ws://foo.example.com</code>.</p>
+
+<p>Some examples of <code>locationDescription</code> values with wildcards are:
+<ol>
+    <li>&#042;&#047; -- matches all requests to any host on port 80 (default port), with no user info or path specified.  </li>
+    <li>&#042;<code>.hostname.com:8000</code>  -- matches all requests to port 8000 on any sub-domain of <code>hostname.com</code>,
+        but not <code>hostname.com</code> itself.</li>
+    <li><code>server.hostname.com:</code>&#042;&#047;&#042; -- matches all requests to a particular server on any port on any path but not the empty path. </li>
+</ol></p>
     </div>
     
 
@@ -170,15 +205,10 @@
 	
         <tr>
             
-                <td class="name"><code>key</code></td>
+                <td class="name"><code>locationDescription</code></td>
             
             
             <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
             
             </td>
             
@@ -186,22 +216,17 @@
             
             
             
-            <td class="description last"><p></td>
+            <td class="description last">the (possibly wild-carded) location(s) at which to register a handler.</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>challengeHandler</code></td>
             
             
             <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
             
             </td>
             
@@ -209,7 +234,7 @@
             
             
             
-            <td class="description last"></td>
+            <td class="description last">the challenge handler to register at the location(s).</td>
         </tr>
 	
 	
@@ -240,7 +265,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line8667">line 8667</a>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line6515">line 6515</a>
     </li></ul></dd>
     
     
@@ -264,6 +289,10 @@
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    a reference to this challenge handler for chained calls
+</div>
+
 
 
 <dl>
@@ -272,7 +301,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type"><a href="AmqpArguments.html">AmqpArguments</a></span>
+<span class="param-type">ChallengeHandler</span>
 
 
 	</dd>
@@ -286,7 +315,7 @@
         
             
 <dt>
-    <h4 class="name" id="addLongString"><span class="type-signature"></span>addLongString<span class="signature">(key, value)</span><span class="type-signature"> &rarr; {<a href="AmqpArguments.html">AmqpArguments</a>}</span></h4>
+    <h4 class="name" id="unregister"><span class="type-signature"></span>unregister<span class="signature">(locationDescription, challengeHandler)</span><span class="type-signature"> &rarr; {ChallengeHandler}</span></h4>
     
     
 </dt>
@@ -294,7 +323,11 @@
     
     
     <div class="description">
-        Adds a long string value to an AmqpArguments table.
+        If the provided challengeHandler is registered at the provided location, clear that
+association such that any future challenge requests matching the location will never
+be handled by the provided challenge handler.
+
+<p>If no such location or challengeHandler registration exists, this method silently succeeds.</p>
     </div>
     
 
@@ -328,15 +361,10 @@
 	
         <tr>
             
-                <td class="name"><code>key</code></td>
+                <td class="name"><code>locationDescription</code></td>
             
             
             <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
             
             </td>
             
@@ -344,22 +372,17 @@
             
             
             
-            <td class="description last"><p></td>
+            <td class="description last">the exact location description at which the challenge handler was originally registered</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>challengeHandler</code></td>
             
             
             <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
             
             </td>
             
@@ -367,7 +390,7 @@
             
             
             
-            <td class="description last"></td>
+            <td class="description last">the challenge handler to de-register.</td>
         </tr>
 	
 	
@@ -398,7 +421,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line8648">line 8648</a>
+        <a href="WebSocket-debug.js.html">WebSocket-debug.js</a>, <a href="WebSocket-debug.js.html#line6571">line 6571</a>
     </li></ul></dd>
     
     
@@ -422,93 +445,10 @@
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    a reference to this object for chained call support
+</div>
 
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type"><a href="AmqpArguments.html">AmqpArguments</a></span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="toString"><span class="type-signature"></span>toString<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Returns String representation of the AmqpArguments.
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Amqp-0-9-1-debug.js.html">Amqp-0-9-1-debug.js</a>, <a href="Amqp-0-9-1-debug.js.html#line8686">line 8686</a>
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
 <dl>
@@ -517,7 +457,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">String</span>
+<span class="param-type">ChallengeHandler</span>
 
 
 	</dd>
@@ -550,7 +490,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Fri Dec 12 2014 22:17:45 GMT-0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Fri Dec 12 2014 22:17:50 GMT-0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

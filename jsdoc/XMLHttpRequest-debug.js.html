@@ -1,4 +1,31 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: XMLHttpRequest-debug.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: XMLHttpRequest-debug.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
  * Copyright (c) 2007-2014 Kaazing Corporation. All rights reserved.
  * 
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -469,16 +496,16 @@ var postMessage0 =
         // Each message is of the form token(8) syn#(8) ack#(8) type[!payload], for example:
         //
         //    -->  01234567 00000001 00000000 f 06 "Hello,"
-        //    <--  89abcdef 00000001 00000001 a
+        //    &lt;--  89abcdef 00000001 00000001 a
         //    -->  01234567 00000002 00000001 F 06 " world"
-        //    <--  89abcdef 00000002 00000002 a
+        //    &lt;--  89abcdef 00000002 00000002 a
         //
         // Writes are immediately enabled after ack, because acks have no ack
         // so acks could be overwritten as follows:
         //
         //    -->  01234567 00000001 00000000 F 06 "Hello "
-        //    <--  89abcdef 00000001 00000001 a
-        //    <--  01234567 00000002 00000001 F 07 "welcome"
+        //    &lt;--  89abcdef 00000001 00000001 a
+        //    &lt;--  01234567 00000002 00000001 F 07 "welcome"
         //
         // The timing is sensitive to when ack#0 and message#1 are written versus
         // when the receiving fragment is read and processed.
@@ -487,8 +514,8 @@ var postMessage0 =
         // ignores old acks as follows:
         //
         //    -->  01234567 00000001 00000000 F 06 "Hello "
-        //    <--  89abcdef 00000001 00000000 a
-        //    <--  01234567 00000001 00000001 a 00000002 00000001 F 07 "welcome"
+        //    &lt;--  89abcdef 00000001 00000000 a
+        //    &lt;--  01234567 00000001 00000001 a 00000002 00000001 F 07 "welcome"
         //
         // No matter the relative timing, the receiver processes one and only one
         // ack#0 and message#1.
@@ -497,7 +524,7 @@ var postMessage0 =
         // send a message before receiving the in-flight message, as follows:
         //  
         //    -->  01234567 00000001 00000000 F 06 "Hello "
-        //    <--  89abcdef 00000001 00000000 F 07 "welcome"
+        //    &lt;--  89abcdef 00000001 00000000 F 07 "welcome"
         //
         // Now both sides are waiting for an ack before sending the ack, so deadlock occurs.
         //
@@ -505,7 +532,7 @@ var postMessage0 =
         // message is repeated, but with an updated ack index as follows:
         //
         //    -->  01234567 00000001 00000000 F 06 "Hello "
-        //    <--  89abcdef 00000001 00000000 F 07 "welcome"
+        //    &lt;--  89abcdef 00000001 00000000 F 07 "welcome"
         //    -->  01234567 00000001 00000001 F 05 "Hello"
         //
         // This repeated send causes the receiver to send the next message, acknowledging the
@@ -616,7 +643,7 @@ var postMessage0 =
         }
         
         function bridgeIfNecessary($this, target) {
-            if ($this.lastWrite < 1 && !$this.bridged) {
+            if ($this.lastWrite &lt; 1 && !$this.bridged) {
                 if (target.parent == window) {
                     // first write to target writes parent origin to target hash
                     var src = $this.iframe.src;
@@ -625,7 +652,7 @@ var postMessage0 =
                     var sourceBridgeAuthority = null;
                     // TODO: and move this out to a sensible place
                     var tags = document.getElementsByTagName("meta");
-                    for (var i=0; i<tags.length; i++) {
+                    for (var i=0; i&lt;tags.length; i++) {
                         if (tags[i].name == "kaazing:resources") {
                             alert('kaazing:resources is no longer supported. Please refer to the Administrator\'s Guide section entitled "Configuring a Web Server to Integrate with Kaazing Gateway"');
                         }
@@ -650,7 +677,7 @@ var postMessage0 =
                     }
 
                     // if there is a bridge location configured, it should take precedence
-                    for (var i=0; i<tags.length; i++) {
+                    for (var i=0; i&lt;tags.length; i++) {
                         if (tags[i].name == "kaazing:postMessageBridgeURL") {
                             var bridgeUrlString = tags[i].content
                             var postMessageBridgeURL = new URI(bridgeUrlString);
@@ -908,7 +935,7 @@ var postMessage0 =
         var pollMessagePipes = [];
         
         function pollReaders() {
-            for (var i=0,len=pollMessagePipes.length; i < len; i++) {
+            for (var i=0,len=pollMessagePipes.length; i &lt; len; i++) {
                 var messagePipe = pollMessagePipes[i];
                 messagePipe.poll();
             }
@@ -921,7 +948,7 @@ var postMessage0 =
             }
             else if (target.parent == window) {
                 var iframes = document.getElementsByTagName("iframe");
-                for (var i=0; i < iframes.length; i++) {
+                for (var i=0; i &lt; iframes.length; i++) {
                     var iframe = iframes[i];
                     if (target == iframe.contentWindow) {
                         return supplyIFrameMessagePipe(iframe);
@@ -1021,18 +1048,18 @@ var postMessage0 =
                     // let the sourceBridge window be reachable from postMessage target bridge iframe
                     htmlfile.parentWindow.opener = window;
                 }
-                htmlfile.write("<html>");
-                htmlfile.write("<body>");
+                htmlfile.write("&lt;html>");
+                htmlfile.write("&lt;body>");
 
                 // set document.domain for htmlfile if necessary
                 if (htmlfileDomain) {
-                    htmlfile.write("<script>CollectGarbage();document.domain='" + htmlfileDomain + "';</" + "script>");
+                    htmlfile.write("&lt;script>CollectGarbage();document.domain='" + htmlfileDomain + "';&lt;/" + "script>");
                 };
                 
                 // IE cannot tolerate # in the initial iframe URL inside ActiveXObject("htmlfile")
-                htmlfile.write("<iframe src=\"" + targetBridgeURL + "\"></iframe>");
-                htmlfile.write("</body>");
-                htmlfile.write("</html>");
+                htmlfile.write("&lt;iframe src=\"" + targetBridgeURL + "\">&lt;/iframe>");
+                htmlfile.write("&lt;/body>");
+                htmlfile.write("&lt;/html>");
                 htmlfile.close();
 
                 var iframe = htmlfile.body.lastChild;
@@ -1136,7 +1163,7 @@ var postMessage0 =
 
         postMessage0.detach = function(target) {
             var messagePipe = findMessagePipe(target);
-            for (var i=0; i < pollMessagePipes.length; i++) {
+            for (var i=0; i &lt; pollMessagePipes.length; i++) {
                 if (pollMessagePipes[i] == messagePipe) {
                     pollMessagePipes.splice(i, 1);
                 }
@@ -1226,12 +1253,12 @@ var postMessage0 =
 
         // proactively set the parent origin information on appropriately tagged iframes
         var tags = document.getElementsByTagName("meta");
-        for(var i=0; i < tags.length; i++) {
+        for(var i=0; i &lt; tags.length; i++) {
             if (tags[i].name === "kaazing:postMessage") {
                 if ("immediate" == tags[i].content) {
                     var checkAllIframes = function() {
                         var iframes = document.getElementsByTagName("iframe");
-                        for (var i=0; i < iframes.length; i++) {
+                        for (var i=0; i &lt; iframes.length; i++) {
                             var iframe = iframes[i];
                             if (iframe.style["KaaPostMessage"] == "immediate") {
                                 iframe.style["KaaPostMessage"] = "none";
@@ -1246,7 +1273,7 @@ var postMessage0 =
                 break;
             }
         }
-        for(var i = 0; i < tags.length; i++) {
+        for(var i = 0; i &lt; tags.length; i++) {
             if (tags[i].name === "kaazing:postMessagePrefix") {
                 var newPrefix = tags[i].content;
                 if (newPrefix != null && newPrefix.length > 0) {
@@ -1309,7 +1336,7 @@ var XDRHttpDirect = (function() {
             try {
                 // process emulated headers in payload
                 var responseText = xdr.responseText;
-                if(readyState <= 2) {
+                if(readyState &lt;= 2) {
                     var endOfHeadersAt = responseText.indexOf("\r\n\r\n");
                     //console.log("endOfHeadersAt: " + endOfHeadersAt);
                     if (endOfHeadersAt == -1) {
@@ -1327,7 +1354,7 @@ var XDRHttpDirect = (function() {
                     var headerLines = responseText.substring(startOfHeadersAt, endOfHeadersAt).split("\r\n");
                     //console.log("_responseHeaders: " + headerLines);
                     xhr._responseHeaders = {};
-                    for (var i=0; i < headerLines.length; i++) {
+                    for (var i=0; i &lt; headerLines.length; i++) {
                         var header = headerLines[i].split(":");
                         xhr._responseHeaders[header[0].replace(/^\s+|\s+$/g,"")] = header[1].replace(/^\s+|\s+$/g,"");
                     }
@@ -1370,7 +1397,7 @@ var XDRHttpDirect = (function() {
         }
         xdr.onload = function(e) {
             //console.log("xdr "+ id + " .onload(" + [e] + ")" + new Date().getTime());
-            if (readyState <= 3) {
+            if (readyState &lt;= 3) {
             	onProgressFunc(e);
             }
             reayState = xhr.readyState = 4;
@@ -1390,14 +1417,14 @@ var XDRHttpDirect = (function() {
          // wrapper http request, remove &.kct=application%2Fx-message-http to match outer request path
          var wpayload = this._method + " " + this.location.substring(this.location.indexOf("/", 9), this.location.indexOf("&.kct")) + " HTTP/1.1\r\n";
          //headers
-         for (var i = 0; i < this.outer._requestHeaders.length; i++) {
+         for (var i = 0; i &lt; this.outer._requestHeaders.length; i++) {
   	         wpayload += this.outer._requestHeaders[i][0] + ": " + this.outer._requestHeaders[i][1] + "\r\n";
          }
          var content = payload || "";
          if (content.length > 0 || this._method.toUpperCase() === "POST") {
              // calculate content-length
              var len = 0;
-             for (var i = 0; i < content.length; i++) {
+             for (var i = 0; i &lt; content.length; i++) {
                  len++;
                  if (content.charCodeAt(i) >= 0x80) {
                      // handle \u0100 as well as \u0080 
@@ -1447,16 +1474,16 @@ var XMLHttpBridge = (function() {
     //    --> "d" 00000001
     //
     //    - readystate -
-    //    <-- "r" 00000001 01 000b "Content-Type" 000a "text/plain" 00c2 02 "OK"
+    //    &lt;-- "r" 00000001 01 000b "Content-Type" 000a "text/plain" 00c2 02 "OK"
     //
     //    - progress -
-    //    <-- "p" 00000001 3 0000000c "Hello, world"
+    //    &lt;-- "p" 00000001 3 0000000c "Hello, world"
     //
     //    - error -
-    //    <-- "e" 00000001
+    //    &lt;-- "e" 00000001
     //
     //    - timeout -
-    //    <-- "t" 00000001
+    //    &lt;-- "t" 00000001
     //
     */
     // IE6 cannot access window.location after document.domain is assigned, use document.URL instead
@@ -1535,7 +1562,7 @@ var XMLHttpBridge = (function() {
 	        }
             break;
         case 4:
-            if ($this.outer.status < 100 || $this.outer.status >= 500) {
+            if ($this.outer.status &lt; 100 || $this.outer.status >= 500) {
 		        if (typeof($this.onerror) !== "undefined") {
 			        $this.onerror($this.outer);
 			    }
@@ -1591,7 +1618,7 @@ var XMLHttpBridge = (function() {
         var streaming = ($this.outer.onprogress !== undefined) ? "t" : "f";
 
         var message = ["s", $this._id, method.length, method, toPaddedHex(location.length, 4), location, toPaddedHex(requestHeaders.length, 4)];
-        for (var i=0; i < requestHeaders.length; i++) {
+        for (var i=0; i &lt; requestHeaders.length; i++) {
             var requestHeader = requestHeaders[i];
             message.push(toPaddedHex(requestHeader[0].length, 4));
             message.push(requestHeader[0]);
@@ -1779,11 +1806,11 @@ var XMLHttpBridge = (function() {
 	                    switch (type) {
 	                    case "r":
                             /*    - readystate -
-                            //    <-- "r" 00000001 01 000b "Content-Type" 000a "text/plain" 00c2 02 "OK"
+                            //    &lt;-- "r" 00000001 01 000b "Content-Type" 000a "text/plain" 00c2 02 "OK"
                             */
 	                        var responseHeaders = {};
 	                        var responseHeaderCount = fromHex(message.substring(position, position += 2));
-	                        for (var i=0; i < responseHeaderCount; i++) {
+	                        for (var i=0; i &lt; responseHeaderCount; i++) {
 	                            var labelSize = fromHex(message.substring(position, position += 4));
 	                            var label = message.substring(position, position += labelSize);
                                 var valueSize = fromHex(message.substring(position, position += 4));
@@ -1838,7 +1865,7 @@ var XMLHttpBridge = (function() {
 	                    case "p":
                             /*
                             //    - progress -
-                            //    <-- "p" 00000001 3 0000000c "Hello, world"
+                            //    &lt;-- "p" 00000001 3 0000000c "Hello, world"
 	                        */
 	                    	
 	                        // update the readyState
@@ -1869,7 +1896,7 @@ var XMLHttpBridge = (function() {
 	                    	break;
 	                    case "e":
 	                        /*    - error -
-	                        //    <-- "e" 00000001
+	                        //    &lt;-- "e" 00000001
                             */
 	                        if (xmlHttp._id === id) {
 		                        // reset status
@@ -1888,7 +1915,7 @@ var XMLHttpBridge = (function() {
                             break;
 	                    case "t":
 	                        /*    - timeout -
-	                        //    <-- "t" 00000001
+	                        //    &lt;-- "t" 00000001
                             */
 	                        if (xmlHttp._id === id) {
 		                        // reset status
@@ -2173,7 +2200,7 @@ var XMLHttpRequest0 = (function() {
             if ($this.readyState > 1) {
                return; // readystatechange already fired for readyState=2 or bigger vaue
             }
-            if ($this.readyState < 1) {	
+            if ($this.readyState &lt; 1) {	
                 $this.readyState = 1; // opened
             }
             onreadystatechange($this); 
@@ -2224,7 +2251,7 @@ var XMLHttpRequest0 = (function() {
             if ($this.readyState > 2) {
                 return; // readystatechange already fired for readyState=2
             }
-            if ($this.readyState < 2) {
+            if ($this.readyState &lt; 2) {
                 $this.readyState = 2;
             }
             onreadystatechange($this); 
@@ -2289,680 +2316,26 @@ var XMLHttpRequest0 = (function() {
     return XMLHttpRequest0;
 })();
     
-    
+    </code></pre>
+        </article>
+    </section>
 
 
 
-var coverNativeSSE = true;
-if (coverNativeSSE || typeof(window.EventSource) === "undefined") {
-    var EventSource = (function() {
-        /**
-         * Creates a new EventSource instance and connects to the stream location.
-         *
-         * @param {String} location      the stream location
-         *
-         * @constructor
-         * @name EventSource
-         * 
-         * @class  EventSource provides a text-based stream abstraction for JavaScript.
-         */
-        function EventSource(location) {
-            this.lastEventId = null;
-            this.immediate = false;
-            this.retry = 3000;  // default retry to 3s
-            
-            // determine event source origin
-            var locationURI = new URI(location);
-            var defaultPorts = { "http":80, "https":443 };
-            if (locationURI.port == null) {
-                locationURI.port = defaultPorts[locationURI.scheme];
-                locationURI.authority = locationURI.host + ":" + locationURI.port;
-            }
-            this.origin = locationURI.scheme + "://" + locationURI.authority;
-            
-            this.location = location;
-            this.lineQueue = [];
-            
-            this.xhr = null;
-            this.reconnectTimer = null;
-            
-            // allow onopen to be assigned before triggering
-            var $this = this;
-            setTimeout(function() { _connect($this, false) }, 0);
-        }
-        
-        var $prototype = EventSource.prototype;
-        
-        /**
-         * The ready state indicates the stream status, 
-         * Possible values are 0 (CONNECTING), 1 (OPEN) and 2 (CLOSED)
-         *
-         * @public
-         * @field
-         * @name readyState
-         * @type Number
-         * @memberOf EventSource#
-         */
-        $prototype.readyState = 0;
 
-        /**
-         * The onopen handler is called when the stream is established.
-         *
-         * @public
-         * @field
-         * @name onopen
-         * @type Function
-         * @memberOf EventSource#
-         */
-        $prototype.onopen = function() {};
-        
-        /**
-         * The onmessage handler is called when data arrives.
-         *
-         * @public
-         * @field
-         * @name onmessage
-         * @type Function
-         * @memberOf EventSource#
-         */
-        $prototype.onmessage = function(event) {};
+</div>
 
-        /**
-         * The onerror handler is called when the stream has a network or server error.
-         *
-         * @public
-         * @field
-         * @name onerror
-         * @type Function
-         * @memberOf EventSource#
-         */
-        $prototype.onerror = function() {};
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AmqpArguments.html">AmqpArguments</a></li><li><a href="AmqpChannel.html">AmqpChannel</a></li><li><a href="AmqpClient.html">AmqpClient</a></li><li><a href="AmqpClientFactory.html">AmqpClientFactory</a></li><li><a href="AmqpEvent.html">AmqpEvent</a></li><li><a href="AmqpProperties.html">AmqpProperties</a></li><li><a href="ArrayBuffer.html">ArrayBuffer</a></li><li><a href="BasicChallengeHandler.html">BasicChallengeHandler</a></li><li><a href="Blob.html">Blob</a></li><li><a href="BlobUtils.html">BlobUtils</a></li><li><a href="ChallengeRequest.html">ChallengeRequest</a></li><li><a href="ChallengeResponse.html">ChallengeResponse</a></li><li><a href="CloseEvent.html">CloseEvent</a></li><li><a href="DispatchChallengeHandler.html">DispatchChallengeHandler</a></li><li><a href="EventDispatcher.html">EventDispatcher</a></li><li><a href="EventSource.html">EventSource</a></li><li><a href="HttpRedirectPolicy.html">HttpRedirectPolicy</a></li><li><a href="MessageEvent.html">MessageEvent</a></li><li><a href="NegotiableChallengeHandler.html">NegotiableChallengeHandler</a></li><li><a href="NegotiateChallengeHandler.html">NegotiateChallengeHandler</a></li><li><a href="Oid.html">Oid</a></li><li><a href="PasswordAuthentication.html">PasswordAuthentication</a></li><li><a href="WebSocket.html">WebSocket</a></li><li><a href="WebSocketFactory.html">WebSocketFactory</a></li></ul><h3>Events</h3><ul><li><a href="WebSocket.html#event:close">close</a></li><li><a href="WebSocket.html#event:error">error</a></li><li><a href="WebSocket.html#event:message">message</a></li><li><a href="WebSocket.html#event:open">open</a></li></ul><h3>Global</h3><ul><li><a href="global.html#postMessage0">postMessage0</a></li><li><a href="global.html#ULOG">ULOG</a></li></ul>
+</nav>
 
-        /**
-         * Disconnects the stream.
-         *
-         * @return {void}
-         *
-         * @public
-         * @function
-         * @name disconnect
-         * @memberOf EventSource#
-         */
-        $prototype.disconnect = function() {
-            // disconnect only if not already disconnected
-            if (this.readyState !== 2) {
-                _disconnect(this);
-            }
-        };
-        
-        function _connect($this, immediate, queryParams) {
-            // ensure reconnect timer is null
-            if ($this.reconnectTimer !== null) {
-                $this.reconnectTimer = null;
-            }
-            
-            // construct XDR destination
-            var connectURI = new URI($this.location);
-            if (queryParams === undefined){ 
-                queryParams = [];
-            }
-            if ($this.lastEventId !== null) {
-                queryParams.push(".ka=" + this.lastEventId);
-            }
-            
-            // check for existing threshold
-            if ($this.location.indexOf("&.kb=") === -1 && $this.location.indexOf("?.kb=") === -1) {
-                queryParams.push(".kb=512");  // stream threshold in KB
-            }
-                
-            switch (browser) {
-            case 'ie':
-            case 'safari':
-                // TODO: "safari" seems to work without the padding, 
-                //       but might only be for recent versions
-                queryParams.push(".kp=256");  // stream padding in bytes
-                break;
-            case 'firefox':
-                queryParams.push(".kp=1025");  // stream padding in bytes
-                
-                // FF will not open multiple "GET" streams to the same URI
-                queryParams.push(String(Math.random()).substring(2));
-                break;
+<br clear="both">
 
-            case 'android':
-                // Android requires 4K buffer to start (on 2.2.1), 
-                // plus 4K buffer to be filled since previous message
-                queryParams.push(".kp=4096");  // "initial padding" in bytes
-                queryParams.push(".kbp=4096"); // "block padding" in bytes
-                break;
-            }
-           
-            if (queryParams.length > 0) {
-                if (connectURI.query === undefined) {
-                   connectURI.query = queryParams.join("&");
-                }
-                else {
-                   connectURI.query += "&" + queryParams.join("&");
-                }
-            }
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Fri Dec 12 2014 22:17:43 GMT-0000 (UTC)
+</footer>
 
-            // initialize CS-XHR (FF3.5 cannot reuse CS-XHRs)
-            var xhr = $this.xhr = new XMLHttpRequest0();
-            var progress = { "xhr":xhr, "position":0 };
-    
-            // attach listeners and send request
-            // if in proxy mode and not secure, don't attach progress handler
-            // this prevents use of iframe for IE, allowing us to detect timeout
-            if ($this.location.indexOf(".ki=p") == -1 || $this.location.indexOf("https://") == 0) {
-                xhr.onprogress = function() { 
-                    // FF 3.5 updates responseText after onprogress
-                    setTimeout(function() {_process($this, progress); }, 0);
-                };
-            }
-
-            xhr.onload = function() { 
-                _process($this, progress);
-                if ($this.xhr == progress.xhr && $this.readyState != 2) { // CLOSED
-                    _reconnect($this);
-                }
-            };
-            xhr.onerror = function() {
-                if ($this.readyState != 2) { // CLOSED
-                    _disconnect($this);
-                    _error($this);
-                   }
-            };
-            xhr.ontimeout = function() { 
-                if ($this.readyState != 2) { // CLOSED
-                    _disconnect($this);
-                    _error($this);
-                   }
-            };
-            xhr.onreadystatechange = function() {
-                if (!immediate) {
-                    if (xhr.readyState >= 3) {
-                        $this.readyState = 1; // OPEN
-                        if (typeof($this.onopen) === "function") {
-                            $this.onopen();
-                        }
-                        xhr.onreadystatechange = function() {};
-                    }
-                }
-            };
-            
-            // FF 3.5 requires onprogress handler attached before calling open()
-            // FF will not open multiple "GET" streams to the same URI (see random query param above)
-            xhr.open("GET", connectURI.toString(), true);
-
-            xhr.send(null);
-            
-            // TODO: use ontimeout instead if it means timeout to start response (not complete response)
-            // if an intermediate transparent proxy defeats HTTP streaming response
-            // then force proxy mode, resulting in either HTTPS streaming or long-polling
-            if ($this.location.indexOf(".ki=p") == -1) {
-                setTimeout(function() {
-                    // successful XHR streaming mode will already be in XHR readyState 3
-                    // and EventSource is not disconnected if SSE readyState < 2
-                    if(xhr.readyState < 3 && $this.readyState < 2) {
-                        // force proxy mode on the location (reused by reconnects)
-                        // reconnect in force proxy mode
-                        _connect($this, false, new Array(".ki=p"));
-                    }
-                }, 
-                3000);
-            }
-        }
-        
-        function _disconnect($this) {
-            if ($this.reconnectTimer !== null) {
-                clearTimeout($this.reconnectTimer);
-                $this.reconnectTimer = null;
-            }
-            
-            $this.lineQueue = [];
-            $this.lastEventId = null;
-            $this.location = null;
-            $this.readyState = 2; // CLOSED
-            
-            if ($this.xhr !== null) {
-                $this.xhr.onprogress = function() { };
-                $this.xhr.onload = function() { };
-                $this.xhr.onerror = function() { };
-                $this.xhr.onreadystatechange = function() {};
-                $this.xhr.abort();
-            }
-        }
-
-        function _reconnect($this) {
-            $this.readyState = 0; // CONNECTING
-            
-            // schedule connect after retry milliseconds, unless disconnected
-            if ($this.location !== null) {
-                var delay = $this.retry;
-                var immediate = $this.immediate;
-                if (immediate) {
-                    $this.immediate = false;
-                    delay = 0;
-                }
-                else {
-                    _error($this);
-                }
-                
-                // onerror callback can disconnect
-                // so verify readyState before scheduling reconnect
-                if ($this.readyState == 0) {
-                    $this.reconnectTimer = setTimeout(function() { _connect($this, immediate); }, delay);
-                }
-            }
-        }
-    
-        // end of line can be \r, \n or \r\n
-        var linesPattern = /[^\r\n]+|\r\n|\r|\n/g;
-        
-        function _process($this, progress) {
-            var responseText = progress.xhr.responseText;
-            var progressText = responseText.slice(progress.position);
-            
-            // return an array of line data interspersed with end-of-line sequences
-            var matchInfo = progressText.match(linesPattern) || [];
-            var lineQueue = $this.lineQueue;
-    
-            // walk the array of matches, dispatching events
-            var lineInfo = "";
-            while (matchInfo.length > 0) {
-                var matchItem = matchInfo.shift();
-                switch (matchItem.charAt(0)) {
-                case '\r':
-                case '\n':
-                        // advance the pointer only on the new line in the data
-                    progress.position += lineInfo.length + matchItem.length;
-                    // end-of-line sequence detected
-                    if (lineInfo === "") {
-                        // empty line, dispatch line queue as complete event
-                        _dispatch($this);
-                    }
-                    else {
-                        // non-empty line, add to line queue
-                        lineQueue.push(lineInfo);
-                        lineInfo = "";
-                    }
-                    break;
-                default:
-                    // line data detected
-                    lineInfo = matchItem;
-                    break;
-                }
-            }
-        }
-    
-        function _dispatch($this) {
-            var data = "";
-            var name = "message";
-            var lineQueue = $this.lineQueue;
-    
-            // process line queue as a complete event
-            while (lineQueue.length > 0) {
-                var line = lineQueue.shift();
-    
-                var field = null;
-                var value = "";
-    
-                var colonAt = line.indexOf(':');
-                if (colonAt == -1) {
-                    // no colon, line is field name with empty value
-                    field = line;
-                    value = "";
-                }
-                else if (colonAt === 0) {
-                    // leading colon indicates comment line
-                    continue;
-                }
-                else {
-                    // field:[ ]value
-                    field = line.slice(0, colonAt);
-                    
-                    var valueAt = colonAt + 1;
-                    if (line.charAt(valueAt) == " ") {
-                        valueAt++;
-                    }
-                    value = line.slice(valueAt);
-                }
-    
-                // process field of completed event            
-                switch (field) {
-                  case "event":
-                    name = value;
-                    break;
-                  case "id":
-                    $this.lastEventId = value;
-                    break;
-                  case "retry":
-                    value = parseInt(value, 10);
-                    if (!isNaN(value)) {
-                        $this.retry = value;
-                    }
-                    break;
-                  case "data":
-                    if (data.length > 0) {
-                        data += "\n";
-                    }
-                    data += value;
-                    break;
-                  case "location":
-                    if (value != "") {
-                       $this.location = value;
-                    }
-                    break;
-                  case "reconnect":
-                    $this.immediate = true;
-                    break;
-                  default:
-                    // ignore other field names
-                    break;
-                }
-            }
-    
-            // dispatch if the data is non-null, or the event name is specified and not "message"        
-            if (data.length > 0 || (name.length > 0 && name != "message")) {
-                var e = document.createEvent("Events");
-                e.initEvent(name, true, true);
-                e.lastEventId = $this.lastEventId;
-                e.data = data;
-                e.origin = $this.origin;
-    
-                // ie8 fails on assigning event source (already null, readonly)             
-                if (e.source !== null) {
-                    e.source = null;
-                }
-    
-                if (typeof($this.onmessage) === "function") {
-                    $this.onmessage(e);
-                }
-            }
-        }
-
-        function _error($this) {
-            var e = document.createEvent("Events");
-            e.initEvent("error", true, true);
-            if (typeof($this.onerror) === "function") {
-                $this.onerror(e);
-            }
-        }
-        
-        return EventSource;
-    })();
-} else {
-    // overwrite native EventSource with cross-origin bridged version
-    window.EventSource = (function() {
-        // emulating cross-origin EventSource uses postMessage
-        //
-        //  init
-        //      -> I
-        //
-        //  connect
-        //      -> c
-        //
-        //  event
-        //      <- E 
-        //          id (byte)
-        //          event name (length prefixed string)
-        //          event data (length prefixed string)
-
-
-        var pipes = {};
-        var registry = {};
-        var nextId = 0;
-
-
-        function EventSource(location) {
-            this.readyState = 0;
-
-            // attach this instance to the pipe
-            var id = register(this);
-            var pipe = supplyPipe(this, location);
-            pipe.attach(id);
-
-            // connect message
-            var message = ["c", id, toPaddedHex(location.length, 4), location].join("");
-            pipe.post(message);
-
-            this._id = id;
-            this._pipe = pipe;
-        }
-
-        var $prototype = EventSource.prototype;
-
-        $prototype.disconnect = function() {
-            var pipe = this._pipe;
-            if (pipe !== undefined) {
-                //    - abort -
-                //    --> "a" 00000001
-                pipe.post(["a", this._id].join(""));
-                pipe.detach(this._id);
-            }
-            this.readyState = 2;
-        }
-
-        function register($this) {
-            var id = toPaddedHex(nextId++, 8);
-            registry[id] = $this;
-            $this._id = id;
-            return id;
-        }
-
-        function supplyPipe($this, location) {
-            var uri = new URI(location);
-            var hasTargetOrigin = (uri.scheme != null && uri.authority != null);
-            var targetScheme = hasTargetOrigin ? uri.scheme : locationURI.scheme;
-            var targetAuthority = hasTargetOrigin ? uri.authority : locationURI.authority;
-            if (targetAuthority != null && uri.port == null) {
-                targetAuthority = uri.host + ":" + defaultPorts[targetScheme];
-            }
-            var targetOrigin = targetScheme + "://" + targetAuthority;
-            var pipe = pipes[targetOrigin];
-            if (pipe === undefined) {
-                var iframe = document.createElement("iframe");
-                iframe.style.position = "absolute";
-                iframe.style.left = "-10px";
-                iframe.style.top = "10px";
-                iframe.style.visibility = "hidden";
-                iframe.style.width = "0px";
-                iframe.style.height = "0px";
-                
-                var bridgeURI = new URI(targetOrigin);
-                bridgeURI.query = ".kr=xse&.kv=10.05";  // cross-site bridge
-                bridgeURI.path = "/";
-                iframe.src = bridgeURI.toString();
-                
-                function post(message) {
-                    this.buffer.push(message);
-                }
-                
-                function attach(id) {
-                    // lookup previously attached entry
-                    var entry = this.attached[id];
-                    
-                    // attach new entry if necessary 
-                    if (entry === undefined) {
-                        entry = {};
-                        this.attached[id] = entry;
-                    }
-                    
-                    // cancel entry cleanup if necessary
-                    if (entry.timerID !== undefined) {
-                        clearTimeout(entry.timerID);
-                        delete entry.timerID;
-                    }
-                }
-                
-                function detach(id) {
-                    // lookup previously attached entry
-                    var entry = this.attached[id];
-                    
-                    // schedule entry cleanup if necessary
-                    if (entry !== undefined && entry.timerID === undefined) {
-                        var $this = this;
-                        entry.timerID = setTimeout(function() {
-                            // detach entry
-                            delete $this.attached[id];
-                            
-                            // send message to cleanup delegate instance
-                            // Note: do not use $this.post in case pipe has changed
-                            //    - delete -
-                            //    --> "d" 00000001
-                            postMessage0(pipe.iframe.contentWindow, ["d", id].join(""), pipe.targetOrigin);
-                        }, 10000);
-                    }
-                }
-                
-                pipe = {'targetOrigin':targetOrigin, 'iframe':iframe, 'buffer':[], 'post':post, 'attach':attach, 'detach':detach, 'attached':{count:0}};
-                pipes[targetOrigin] = pipe;
-
-                // initialize postMessage from parent
-                function sendInitWhenReady() {
-                    var targetWindow = iframe.contentWindow;
-                    if (!targetWindow) {
-                        setTimeout(sendInitWhenReady, 20);
-                    }
-                    else {
-                        postMessage0(targetWindow, "I", targetOrigin);
-                    }
-                }
-                
-                // 30 sec timeout for cross-origin iframe wrapper initialization
-                // TODO: cancel timerID when "I" arrives from embedded iframe
-                pipe.handshakeID = setTimeout(function() {
-                      // when timeout occurs, then clearing previously associated
-                      // targetOrigin pipe because we cannot wait for success to
-                      // associate the targetOrigin pipe, otherwise 2 parallel requests  
-                      // in-flight could have different pipes for same targetOrigin
-                      // and we require them to have the same pipe for the same targetOrigin
-                    pipes[targetOrigin] = undefined;
-                        pipe.post = function(message) {
-                        // pipe.post will first be called
-                        // when XMLHttpRequest0.send() is called
-                        // triggering the onerror callback
-                        // TODO understand and change this
-                        $this.readyState = 4; // loaded
-                        $this.status = 0; // error
-                        onreadystatechange($this); 
-                       }
-                       // if already attempting to send,
-                       // then trigger onerror callback
-                       if (pipe.buffer.length > 0) {
-                           pipe.post();
-                       }
-                }, 30000);
-
-                // append the iframe to trigger the HTTP request
-                // successful handshake will receive "I" message from iframe
-                document.body.appendChild(iframe);
-
-                // delay calling until after iframe appended, otherwise
-                // this produces a general error on IE
-                sendInitWhenReady();
-            }
-            
-            return pipe;
-        }
-
-        function onmessage(event) {
-            var origin = event.origin;
-            var defaultPorts = {"http":":80", "https": ":443"};
-            var originParts = origin.split(":");
-            if (originParts.length === 2) {
-                origin += defaultPorts[originParts[0]];
-            }
-            var pipe = pipes[origin];
-            
-            if (pipe !== undefined && pipe.iframe !== undefined && event.source == pipe.iframe.contentWindow) {
-                if (event.data == "I") {
-                    // now that cross-domain pipeline has been established,
-                    // clear the handshake timer, flush buffered messages and update post function
-                    clearTimeout(pipe.handshakeID);
-                    var message;
-                    while ((message = pipe.buffer.shift()) !== undefined) {
-                        postMessage0(pipe.iframe.contentWindow, message, pipe.targetOrigin);
-                    }
-                    pipe.post = function(message) {
-                        postMessage0(pipe.iframe.contentWindow, message, pipe.targetOrigin);
-                    }
-                }
-                else {
-                    var message = event.data;
-                    if (message.length >= 9) {
-                        var position = 0;
-                        var type = message.substring(position, position += 1);
-                        var id = message.substring(position, position += 8);
-                        var eventsource = registry[id];
-                        if (eventsource !== undefined) {
-                            switch (type) {
-                            case "D":
-                                // data
-                                // d id, nameLength, name, dataLength, data
-                                var nameLength = fromHex(message.substring(position, position += 4));
-                                var name = message.substring(position, position += nameLength);
-                                var dataLength = fromHex(message.substring(position, position += 4));
-                                var data = message.substring(position, position += dataLength);
-
-                                // dispatch if the data is non-null, or 
-                                // the event name is specified and not "message"
-                                if (data.length > 0 || (name.length > 0 && name != "message")) {
-                                    var e = document.createEvent("Events");
-                                    e.initEvent(name, true, true);
-                                    e.lastEventId = eventsource.lastEventId;
-                                    e.data = data;
-                                    e.origin = eventsource.origin;
-
-                                    if (typeof(eventsource.onmessage) === "function") {
-                                        eventsource.onmessage(e);
-                                    }
-                                }
-
-                                break;
-                            case "O":
-                                // open event
-                                eventsource.readyState = 1;
-                                eventsource.onopen();
-                                break;
-                            case "E":
-                                //    - error -
-                                //    <-- "e" 00000001
-                                if (eventsource._id === id) {
-                                    eventsource.onerror();
-                                }
-                                break;
-                            }
-                        }
-                    }
-                }
-            } else {
-                //throw new Error("Could not perform x-domain EventSource emulation: message pipe not found");
-            }
-        }
-
-
-
-        function fromHex(formatted) {
-            return parseInt(formatted, 16);
-        }
-        
-        function toPaddedHex(value, width) {
-            var hex = value.toString(16);
-            var parts = [];
-            width -= hex.length;
-            while (width-- > 0) {
-                parts.push("0");
-            }
-            parts.push(hex);
-            return parts.join("");
-        }
-
-    // attach message processing
-    window.addEventListener("message", onmessage, false);
-
-        return EventSource;
-    })();
-
-
-}
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
