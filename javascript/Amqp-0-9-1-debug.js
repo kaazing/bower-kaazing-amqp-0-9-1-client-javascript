@@ -2917,14 +2917,15 @@ $prototype._initEventDispatcher = function() {
  * Adds an event listener for the specified type.
  *
  * @param {String}            type      the event type
+ *<p>
  * @param {Function}            listener      the listener
- *
+ *<p>
  * @return {void}
  *
  * @public
  * @function
  * @name addEventListener
- * @memberOf EventDispatcher
+ * @memberOf EventDispatcher#
  */
 $prototype.addEventListener = function(type, listener) {
     var listeners = this._eventListeners[type];
@@ -2939,14 +2940,16 @@ $prototype.addEventListener = function(type, listener) {
  * Removes the specified event listener.
  *
  * @param {String}            type      the event type
+ *<p>
  * @param {Function}            listener      the listener
+ *<p>
  *
  * @return {void}
  *
  * @public
  * @function
  * @name removeEventListener
- * @memberOf EventDispatcher
+ * @memberOf EventDispatcher#
  */
 $prototype.removeEventListener = function(type, listener) {
     var listeners = this._eventListeners[type];
@@ -2971,7 +2974,7 @@ $prototype.removeEventListener = function(type, listener) {
  * @public
  * @function
  * @name hasEventListener
- * @memberOf EventDispatcher
+ * @memberOf EventDispatcher#
  */
 $prototype.hasEventListener = function(type) {
     var listeners = this._eventListeners[type];
@@ -2986,7 +2989,7 @@ $prototype.hasEventListener = function(type) {
  * @public
  * @function
  * @name dispatchEvent
- * @memberOf EventDispatcher
+ * @memberOf EventDispatcher#
  */
 $prototype.dispatchEvent = function(e) {
     var listeners = this._eventListeners[e.type];
@@ -4620,7 +4623,7 @@ _prototype.setReadyState = function(state) {
  * @field
  * @type Function
  * @name onopen
- * @memberOf AmqpClient
+ * @memberOf AmqpClient#
  */
 _prototype.onopen = function(e) {};
 
@@ -4633,7 +4636,7 @@ _prototype.onopen = function(e) {};
  * @field
  * @type Function
  * @name onclose
- * @memberOf AmqpClient
+ * @memberOf AmqpClient#
  */
 _prototype.onclose = function(e) {};
 
@@ -4646,7 +4649,7 @@ _prototype.onclose = function(e) {};
  * @field
  * @type Function
  * @name onerror
- * @memberOf AmqpClient
+ * @memberOf AmqpClient#
  */
 _prototype.onerror = function(e) {};
 
@@ -4777,7 +4780,7 @@ var _protocolHeaders = {"0-9-1" : [65, 77, 81, 80, 0, 0, 9, 1] };
  * @private
  * @function
  * @name connect
- * @memberOf AmqpClient
+ * @memberOf AmqpClient#
  */
 _prototype.connect = function connect(url, virtualHost, credentials, callback) {
     if (this._socket) {
@@ -4835,14 +4838,13 @@ _prototype.connect = function connect(url, virtualHost, credentials, callback) {
  *  Note that 'url', 'virtualHost' and 'credentials' are required properties
  *  and valid values must be passed in. A JavaScript error is thrown if the
  *  aforementioned arguments are undefined, null, or empty string.
- *  
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
  * @return {void}
  * @public
  * @function
  * @name connect
- * @memberOf AmqpClient
+ * @memberOf AmqpClient#
  */
 var clientConnFunc = _prototype.connect;
 _prototype.connect = function(config, callback) {
@@ -4878,13 +4880,13 @@ _prototype.connect = function(config, callback) {
 };
 
 /**
- * Disconnect from the AMQP broker
+ * Disconnect from the AMQP broker.
  * @return {void}
  *
  * @public
  * @function
  * @name disconnect 
- * @memberOf AmqpClient
+ * @memberOf AmqpClient#
  */
 _prototype.disconnect = function disconnect() {
     if (this.getReadyState() == this.OPEN) {
@@ -4905,14 +4907,13 @@ _prototype.disconnect = function disconnect() {
 /**
  * Opens an AMQP Channel
  *
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success. 
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name openChannel
- * @memberOf AmqpClient
+ * @memberOf AmqpClient#
  */
 _prototype.openChannel = function openChannel(callback) {
     //log2("calling openChannel on ", this);  
@@ -4932,7 +4933,7 @@ _prototype.openChannel = function openChannel(callback) {
  * @public
  * @function
  * @name getAmqpClientFactory
- * @memberOf AmqpClient
+ * @memberOf AmqpClient#
  */
 _prototype.getAmqpClientFactory = function getAmqpClientFactory(callback) {
     return (this._amqpClientFactory || null);
@@ -5441,6 +5442,7 @@ var initChannel = function initChannel(channel, id, connection, cb) {
  * AmqpChannel
  *
  * @class  AmqpChannel is a channel opened with the AMQP broker. Use AmqpClient.openChannel() to create a new AmqpChannel.
+ * @constructor
  */
 var AmqpChannel = function() {
 }
@@ -5590,7 +5592,7 @@ AmqpChannel.prototype.flowFlag = true;
  * @field
  * @type Function
  * @name onmessage
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onmessage = function(e) {};
 
@@ -5604,7 +5606,7 @@ AmqpChannel.prototype.onmessage = function(e) {};
  * @field
  * @type Function
  * @name onclose
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onclose = function(e) {};
 
@@ -5618,7 +5620,7 @@ AmqpChannel.prototype.onclose = function(e) {};
  * @field
  * @type Function
  * @name onerror
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onerror = function(e) {};
 
@@ -5632,7 +5634,7 @@ AmqpChannel.prototype.onerror = function(e) {};
  * @field
  * @type Function
  * @name onopen
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onopen = function(e) {};
 
@@ -5646,7 +5648,7 @@ AmqpChannel.prototype.onopen = function(e) {};
  * @field
  * @type Function
  * @name ondeclarequeue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.ondeclarequeue = function(e) {};
 
@@ -5660,7 +5662,7 @@ AmqpChannel.prototype.ondeclarequeue = function(e) {};
  * @field
  * @type Function
  * @name ondeclareexchange
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.ondeclareexchange = function(e) {};
 
@@ -5674,7 +5676,7 @@ AmqpChannel.prototype.ondeclareexchange = function(e) {};
  * @field
  * @type Function
  * @name onflow
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onflow = function(e) {};
 
@@ -5688,7 +5690,7 @@ AmqpChannel.prototype.onflow = function(e) {};
  * @field
  * @type Function
  * @name onbindqueue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onbindqueue = function(e) {};
 
@@ -5702,7 +5704,7 @@ AmqpChannel.prototype.onbindqueue = function(e) {};
  * @field
  * @type Function
  * @name onunbindqueue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onunbindqueue = function(e) {};
 
@@ -5716,7 +5718,7 @@ AmqpChannel.prototype.onunbindqueue = function(e) {};
  * @field
  * @type Function
  * @name ondeletequeue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.ondeletequeue = function(e) {};
 
@@ -5730,7 +5732,7 @@ AmqpChannel.prototype.ondeletequeue = function(e) {};
  * @field
  * @type Function
  * @name ondeleteexchange
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.ondeleteexchange = function(e) {};
 
@@ -5744,7 +5746,7 @@ AmqpChannel.prototype.ondeleteexchange = function(e) {};
  * @field
  * @type Function
  * @name onconsume
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onconsume = function(e) {};
 
@@ -5758,7 +5760,7 @@ AmqpChannel.prototype.onconsume = function(e) {};
  * @field
  * @type Function
  * @name oncancel
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.oncancel = function(e) {};
 
@@ -5772,7 +5774,7 @@ AmqpChannel.prototype.oncancel = function(e) {};
  * @field
  * @type Function
  * @name oncommittransaction
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.oncommittransaction = function(e) {};
 
@@ -5786,7 +5788,7 @@ AmqpChannel.prototype.oncommittransaction = function(e) {};
  * @field
  * @type Function
  * @name onrollbacktransaction
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onrollbacktransaction = function(e) {};
 
@@ -5800,7 +5802,7 @@ AmqpChannel.prototype.onrollbacktransaction = function(e) {};
  * @field
  * @type Function
  * @name onselecttransaction
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onselecttransaction = function(e) {};
 
@@ -5814,7 +5816,7 @@ AmqpChannel.prototype.onselecttransaction = function(e) {};
  * @field
  * @type Function
  * @name onget
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onget = function(e) {};
 
@@ -5828,7 +5830,7 @@ AmqpChannel.prototype.onget = function(e) {};
  * @field
  * @type Function
  * @name onpurgequeue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onpurgequeue = function(e) {};
 
@@ -5842,7 +5844,7 @@ AmqpChannel.prototype.onpurgequeue = function(e) {};
  * @field
  * @type Function
  * @name onrecover
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onrecover = function(e) {};
 
@@ -5856,7 +5858,7 @@ AmqpChannel.prototype.onrecover = function(e) {};
  * @field
  * @type Function
  * @name onreject
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 AmqpChannel.prototype.onreject = function(e) {};
 
@@ -6000,14 +6002,15 @@ AmqpChannel.prototype.onreject = function(e) {};
   * not affect contents returned by Basic.Get-Ok methods.
   *
   * @param {Bit} active  start/stop content frames
-
+  * <p>
   * @param {Function} callback Function to be called on success
+  * <p>
   * @return {AmqpChannel}
   *
   * @public
   * @function
   * @name flowChannel
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
   AmqpChannel.prototype.flowChannel = function(
    active, callback) {
@@ -6059,13 +6062,15 @@ AmqpChannel.prototype.onreject = function(e) {};
   * Confirms to the peer that a flow command was received and processed.
   *
   * @param {Bit} active  current flow setting
+  * <p>
   * @param {Function} callback Function to be called on success
+  * <p>
   * @return {AmqpChannel}
   *
   * @public
   * @function
   * @name flowOkChannel
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
   AmqpChannel.prototype.flowOkChannel = function(
    active, callback) {
@@ -6125,14 +6130,13 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @param {ReplyText} replyText  reply-text
   * @param {ClassId} classId  failing method class
   * @param {MethodId} methodId  failing method ID
-   
   * @param {Function} callback Function to be called on success
   * @return {AmqpChannel}
   *
   * @private
   * @function
   * @name closeChannel
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6233,14 +6237,13 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @param {Bit} durable  request a durable exchange
   * @param {NoWait} noWait  no-wait
   * @param {Table} arguments  arguments for declaration
-   
   * @param {Function} callback Function to be called on success
   * @return {AmqpChannel}
   *
   * @private
   * @function
   * @name declareExchange
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6300,14 +6303,13 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @param {ExchangeName} exchange  exchange
   * @param {Bit} ifUnused  delete only if unused
   * @param {NoWait} noWait  no-wait
-   
   * @param {Function} callback Function to be called on success
   * @return {AmqpChannel}
   *
   * @private
   * @function
   * @name deleteExchange
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6373,14 +6375,13 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @param {Bit} autoDelete  auto-delete queue when unused
   * @param {NoWait} noWait  no-wait
   * @param {Table} arguments  arguments for declaration
-   
   * @param {Function} callback Function to be called on success
   * @return {AmqpChannel}
   *
   * @private
   * @function
   * @name declareQueue
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6444,14 +6445,13 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @param {Shortstr} routingKey  message routing key
   * @param {NoWait} noWait  no-wait
   * @param {Table} arguments  arguments for binding
-   
   * @param {Function} callback Function to be called on success
   * @return {AmqpChannel}
   *
   * @private
   * @function
   * @name bindQueue
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6509,14 +6509,13 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @param {ExchangeName} exchange  exchange
   * @param {Shortstr} routingKey  routing key of binding
   * @param {Table} arguments  arguments of binding
-   
   * @param {Function} callback Function to be called on success
   * @return {AmqpChannel}
   *
   * @private
   * @function
   * @name unbindQueue
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6575,14 +6574,13 @@ AmqpChannel.prototype.onreject = function(e) {};
   *
   * @param {QueueName} queue  queue
   * @param {NoWait} noWait  no-wait
-   
   * @param {Function} callback Function to be called on success
   * @return {AmqpChannel}
   *
   * @private
   * @function
   * @name purgeQueue
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6651,7 +6649,7 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @private
   * @function
   * @name deleteQueue
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6722,7 +6720,7 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @private
   * @function
   * @name qosBasic
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6794,7 +6792,7 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @private
   * @function
   * @name consumeBasic
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6862,7 +6860,7 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @private
   * @function
   * @name cancelBasic
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -6933,7 +6931,7 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @private
   * @function
   * @name publishBasic
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -7002,7 +7000,7 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @private
   * @function
   * @name getBasic
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -7070,7 +7068,7 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @private
   * @function
   * @name ackBasic
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -7136,7 +7134,7 @@ AmqpChannel.prototype.onreject = function(e) {};
   * @private
   * @function
   * @name rejectBasic
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
 
 
@@ -7194,13 +7192,15 @@ AmqpChannel.prototype.onreject = function(e) {};
    * replaces the asynchronous Recover.
    *
    * @param {Bit} requeue  requeue the message
+   * <p>
    * @param {Function} callback Function to be called on success
+   * <p>
    * @return {AmqpChannel}
    *
    * @public
    * @function
    * @name recoverBasic
-   * @memberOf AmqpChannel
+   * @memberOf AmqpChannel#
    */
   AmqpChannel.prototype.recoverBasic = function(
    requeue, callback) {
@@ -7257,12 +7257,13 @@ _basicProperties = [
 * method at least once on a channel before using the Commit or Rollback methods.
 *
 * @param {Function} callback Function to be called on success
+* <p>
 * @return {AmqpChannel}
 *
 * @public
 * @function
 * @name selectTx
-* @memberOf AmqpChannel
+* @memberOf AmqpChannel#
 */
   AmqpChannel.prototype.selectTx = function(
     callback) {
@@ -7309,12 +7310,13 @@ _basicProperties = [
   * the current transaction.  A new transaction starts immediately after a commit.
   *
   * @param {Function} callback Function to be called on success
+  * <p>
   * @return {AmqpChannel}
   *
   * @public
   * @function
   * @name commitTx
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
   AmqpChannel.prototype.commitTx = function(
     callback) {
@@ -7363,12 +7365,13 @@ _basicProperties = [
   * if that is required an explicit recover call should be issued.
   *
   * @param {Function} callback Function to be called on success
+  * <p>
   * @return {AmqpChannel}
   *
   * @public
   * @function
   * @name rollbackTx
-  * @memberOf AmqpChannel
+  * @memberOf AmqpChannel#
   */
   AmqpChannel.prototype.rollbackTx = function(
     callback) {
@@ -7463,17 +7466,15 @@ delete AmqpChannel.prototype.closeOkChannel;
  *                          methodId   --  0
  *                          callback   -- undefined
  *                        </pre>
- * 'callback' specifies a function to be called on success.
- * 
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success. 
- * 
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name closeChannel
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var closeChannelFunc = AmqpChannel.prototype.closeChannel;
 AmqpChannel.prototype.closeChannel = function(config, callback) {
@@ -7537,16 +7538,15 @@ AmqpChannel.prototype.closeChannel = function(config, callback) {
  * and 'topic' Boolean params 'passive', 'durable', and 'noWait' have a default
  * value of false. Param 'args' is an optional param that can be used to pass 
  * in additional properties. 
- *  
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success. 
- * 
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name declareExchange
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var declareExchangeFunc = AmqpChannel.prototype.declareExchange;
 AmqpChannel.prototype.declareExchange = function(config, callback) {
@@ -7612,17 +7612,15 @@ AmqpChannel.prototype.declareExchange = function(config, callback) {
  *                        </pre>
  * Required parameter 'exchange' specifies the name of the exchange. Default 
  * values of the optional boolean parameters 'ifUnused' and 'noWait' is false.
- * 
- * 
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success. 
- * 
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name deleteExchange
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var deleteExchangeFunc = AmqpChannel.prototype.deleteExchange;
 AmqpChannel.prototype.deleteExchange = function(config, callback) {
@@ -7681,17 +7679,16 @@ AmqpChannel.prototype.deleteExchange = function(config, callback) {
  * Required parameter 'queue' specifies the queue name. Boolean parameters
  * 'passive', 'durable', 'noWait', 'exclusive' and 'autoDelete' are optional 
  * with false as the default value. Param 'args' is an optional param that 
- * can be used to pass in additional properties for declaration. 
- * 
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success. 
- *                              
+ * can be used to pass in additional properties for declaration.
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name declareQueue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var declareQueueFunc = AmqpChannel.prototype.declareQueue;
 AmqpChannel.prototype.declareQueue = function(config, callback) {
@@ -7772,16 +7769,15 @@ AmqpChannel.prototype.declareQueue = function(config, callback) {
  * parameter 'noWait' is optional with false as the default value. Param 'args'
  * is an optional amd can be used to pass in additional properties for 
  * declaration.
- *
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
- *                              
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name bindQueue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var bindQueueFunc = AmqpChannel.prototype.bindQueue;
 AmqpChannel.prototype.bindQueue = function(config, callback) {
@@ -7842,18 +7838,16 @@ AmqpChannel.prototype.bindQueue = function(config, callback) {
  * 'exchange' specifies the exchange name. Required parameter 'routingKey'
  * specifies the key that was used to bind the queue to the exchange. Parameter 
  * 'args' is optional and can be used to pass in additional properties for 
- * declaration. Optional param 'callback' specifies the function to be invoked
- *  on success. 
- *
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
- *                              
+ * declaration.
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name unbindQueue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var unbindQueueFunc = AmqpChannel.prototype.unbindQueue;
 AmqpChannel.prototype.unbindQueue = function(config, callback) {
@@ -7906,16 +7900,15 @@ AmqpChannel.prototype.unbindQueue = function(config, callback) {
  *                        </pre>
  * Required parameter 'queue' specifies the queue name. Boolean parameter 
  * 'noWait' is optional with false as the default value.
- *
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
- *                              
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name purgeQueue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var purgeQueueFunc = AmqpChannel.prototype.purgeQueue;
 AmqpChannel.prototype.purgeQueue = function(config, callback) {
@@ -7965,16 +7958,15 @@ AmqpChannel.prototype.purgeQueue = function(config, callback) {
  * Required parameter 'queue' specifies the queue name. Boolean parameters 
  * 'ifUnused', 'ifEmpty', and 'noWait' are optional with false as the default 
  * value. 
- *
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
- *                              
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name deleteQueue
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var deleteQueueFunc = AmqpChannel.prototype.deleteQueue;
 AmqpChannel.prototype.deleteQueue = function(config, callback) {
@@ -8035,16 +8027,15 @@ AmqpChannel.prototype.deleteQueue = function(config, callback) {
  *                        </pre>
  * Parameter 'prefetchSize' and 'prefetchCount' are required. Boolean parameter
  * 'global' is optional with false as the default value.
- *
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
- *                              
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name qosBasic
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var qosBasicFunc = AmqpChannel.prototype.qosBasic;
 AmqpChannel.prototype.qosBasic = function(config, callback) {
@@ -8137,15 +8128,14 @@ AmqpChannel.prototype.qosBasic = function(config, callback) {
  * Parameter 'args' is optional and can be used to pass in additional properties
  * for declaration.
  * 
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
- *                              
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name consumeBasic
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var consumeBasicFunc = AmqpChannel.prototype.consumeBasic;
 AmqpChannel.prototype.consumeBasic = function(config, callback) {
@@ -8222,16 +8212,15 @@ AmqpChannel.prototype.consumeBasic = function(config, callback) {
  *                        </pre>
  * Required parameter consumerTag' is required. Boolean parameters 'noWait' is 
  * optional with false as the default value.
- *
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
- *                              
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name cancelBasic
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var cancelBasicFunc = AmqpChannel.prototype.cancelBasic;
 AmqpChannel.prototype.cancelBasic = function(config, callback) {
@@ -8295,16 +8284,15 @@ AmqpChannel.prototype.cancelBasic = function(config, callback) {
  * convenience. Required parameter 'exchange' specifies the name of the exchange. 
  * Parameter 'routingKey' is required. Boolean parameters 'mandatory' and 
  * 'immediate' are optional with false as the default value.
- * 
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
- *                              
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name publishBasic
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var publishBasicFunc = AmqpChannel.prototype.publishBasic;
 AmqpChannel.prototype.publishBasic = function(config, callback) {
@@ -8383,16 +8371,15 @@ AmqpChannel.prototype.publishBasic = function(config, callback) {
  *                        </pre>
  * Required parameter 'queue' specifies the queue name. Boolean parameter 
  * 'noAck' is optional with false as the default value.
- * 
- * @param {Function} callback   Optional param specifies the function that is 
- *                              to be invoked on success.
- *                              
+ * <p>
+ * @param {Function} callback   Optional param specifies the function that is to be invoked on success.
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name getBasic
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var getBasicFunc = AmqpChannel.prototype.getBasic;
 AmqpChannel.prototype.getBasic = function(config, callback) {
@@ -8440,13 +8427,13 @@ AmqpChannel.prototype.getBasic = function(config, callback) {
  *                        </pre>
  * Parameter 'deliveryTag' is required. Boolean parameter 'multiple' is optional
  * with false as the default value.
- *                              
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name ackBasic
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var ackBasicFunc = AmqpChannel.prototype.ackBasic;
 AmqpChannel.prototype.ackBasic = function(config) {
@@ -8497,13 +8484,13 @@ AmqpChannel.prototype.ackBasic = function(config) {
  *                        </pre>
  * Parameter 'deliveryTag' is required. Boolean parameter 'requeue' is optional
  * with false as the default value.
- *                              
+ * <p>
  * @return {AmqpChannel}
  *
  * @public
  * @function
  * @name rejectBasic
- * @memberOf AmqpChannel
+ * @memberOf AmqpChannel#
  */
 var rejectBasicFunc = AmqpChannel.prototype.rejectBasic;
 AmqpChannel.prototype.rejectBasic = function(config) {
@@ -8661,6 +8648,7 @@ AmqpArguments.prototype = new Array();
      * Adds a long string value to an AmqpArguments table.
      *
      * @param {String} key
+     * <p>
      * @param {String} value
      *
      * @return {AmqpArguments}
@@ -8668,7 +8656,7 @@ AmqpArguments.prototype = new Array();
      * @public
      * @function
      * @name addLongString
-     * @memberOf AmqpArguments
+     * @memberOf AmqpArguments#
      */
     $prototype.addLongString = function(key, value) {
         _add(this, key, value, "longstr");
@@ -8679,6 +8667,7 @@ AmqpArguments.prototype = new Array();
      * Adds an integer value to an AmqpArguments table.
      *
      * @param {String}  key
+     * <p>
      * @param {Number} value
      *
      * @return {AmqpArguments}
@@ -8686,7 +8675,7 @@ AmqpArguments.prototype = new Array();
      * @public
      * @function
      * @name addInteger
-     * @memberOf AmqpArguments
+     * @memberOf AmqpArguments#
      */
     $prototype.addInteger = function(key, value) {
         _add(this, key, value, "int");
@@ -8700,7 +8689,7 @@ AmqpArguments.prototype = new Array();
      * @function
      * @return {String}
      * @name toString
-     * @memberOf AmqpArguments
+     * @memberOf AmqpArguments#
      */
     $prototype.toString = function() {
         var buffer = [];
@@ -8851,7 +8840,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {String}
      * @name getAppId
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return String value for "appId" property
      */
     $prototype.getAppId = function() {
@@ -8866,7 +8855,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {String}
      * @name getContentType
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return String value for "contentType" property
      */
     $prototype.getContentType = function() {
@@ -8881,7 +8870,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {String}
      * @name getContentEncoding
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return String value for "contentEncoding" property
      */
     $prototype.getContentEncoding = function() {
@@ -8896,7 +8885,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {String}
      * @name getCorrelationId
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return String value for "correlationId" property
      */
     $prototype.getCorrelationId = function() {
@@ -8913,7 +8902,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {Number}
      * @name getDeliveryMode
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return Integer value between 0 and 9 for "deliveryMode" property
      */
     $prototype.getDeliveryMode = function() {
@@ -8928,7 +8917,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {Number}
      * @name getExpiration
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return String value for "expiration" property
      */
     $prototype.getExpiration = function() {
@@ -8943,7 +8932,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {object}
      * @name getHeaders
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return AmqpArguments as value for "headers" property
      */
     $prototype.getHeaders = function() {
@@ -8958,7 +8947,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {String}
      * @name getMessageId
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return String value for the "messageId" property
      */
     $prototype.getMessageId = function() {
@@ -8973,7 +8962,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {Number}
      * @name getPriority
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return Integer value for "priority" property between 0 and 9
      */
     $prototype.getPriority = function() {
@@ -8987,7 +8976,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {object}
      * @name getProperties
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return Object with the name-value pairs
      */
     $prototype.getProperties = function() {
@@ -9011,7 +9000,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {String}
      * @name getReplyTo
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return String value for "replyTo" property
      */
     $prototype.getReplyTo = function() {
@@ -9026,7 +9015,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {Number}
      * @name getTimestamp
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return Timestamp value for "timestamp" property
      */
     $prototype.getTimestamp = function() {
@@ -9041,7 +9030,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {String}
      * @name getType
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return String value for "type" property
      */
     $prototype.getType = function() {
@@ -9056,7 +9045,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {String}
      * @name getUserId
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @return String value for  "userId" property
      */
     $prototype.getUserId = function() {
@@ -9071,7 +9060,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @name setAppId
      * @param  appId    value of "appId" property
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      */
     $prototype.setAppId = function(appId) {
         this._properties["appId"] = appId;
@@ -9085,7 +9074,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @name setContentType
      * @param  contentType    value of "contentType" property
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      */
     $prototype.setContentType = function(contentType) {
         this._properties["contentType"] = contentType;
@@ -9099,7 +9088,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @name setContentEncoding
      * @param  encoding    value of "contentEncoding" property
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      */
     $prototype.setContentEncoding = function(encoding) {
         this._properties["contentEncoding"] = encoding;
@@ -9113,7 +9102,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @name setCorrelationId
      * @param  correlationId    value of "correlationId" property
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      */
     $prototype.setCorrelationId = function(correlationId) {
         this._properties["correlationId"] = correlationId;
@@ -9126,7 +9115,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name setDeliveryMode
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @param  deliveryMode    value of "deliveryMode" property
      */
     $prototype.setDeliveryMode = function(deliveryMode) {
@@ -9154,7 +9143,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name setExpiration
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @param  expiration    value of "expiration" property
      */
     $prototype.setExpiration = function(expiration) {
@@ -9168,7 +9157,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name setHeaders
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @param  headers    value of "headers" property
      */
     $prototype.setHeaders = function(headers) {
@@ -9182,7 +9171,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name setMessageId
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @param  messageId    value of "messageId" property
      */
     $prototype.setMessageId = function(messageId) {
@@ -9196,7 +9185,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name setPriority
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @param  priority    value of "priority" property
      */
     $prototype.setPriority = function(priority) {        
@@ -9220,7 +9209,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name setReplyTo
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @param  replyTo    value of "replyTo" property
      */
     $prototype.setReplyTo = function(replyTo) {
@@ -9234,7 +9223,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name setTimestamp
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @param  date    of type Date
      */
     $prototype.setTimestamp = function(date) {
@@ -9253,7 +9242,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name setType
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @param  type    value of "type" property
      */
     $prototype.setType = function(type) {
@@ -9267,7 +9256,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name setUserId
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      * @param  userId    value of "userId" property
      */
     $prototype.setUserId = function(userId) {
@@ -9281,7 +9270,7 @@ var AmqpProperties = function(headers) {
      * @function
      * @return {String}
      * @name toString
-     * @memberOf AmqpProperties
+     * @memberOf AmqpProperties#
      *
      */
     $prototype.toString = function() {
@@ -9419,7 +9408,7 @@ var AmqpProperties = function(headers) {
      * @field
      * @type String
      * @name type
-     * @memberOf AmqpEvent
+     * @memberOf AmqpEvent#
      */
     $prototype.type;
 
@@ -9430,7 +9419,7 @@ var AmqpProperties = function(headers) {
      * @field
      * @type String
      * @name errorMessage
-     * @memberOf AmqpEvent
+     * @memberOf AmqpEvent#
      */
     $prototype.message;
 
@@ -9442,7 +9431,7 @@ var AmqpProperties = function(headers) {
      * @field
      * @type Object
      * @name headers
-     * @memberOf AmqpEvent
+     * @memberOf AmqpEvent#
      * @deprecated  -- Please use 'properties' field of type AmqpProperties
      */
     $prototype.headers;
@@ -9455,7 +9444,7 @@ var AmqpProperties = function(headers) {
      * @field
      * @type AmqpProperties
      * @name properties
-     * @memberOf AmqpEvent
+     * @memberOf AmqpEvent#
      */
     $prototype.properties;
     
@@ -9466,7 +9455,7 @@ var AmqpProperties = function(headers) {
      * @field
      * @type AmqpChannel | AmqpClient
      * @name target
-     * @memberOf AmqpEvent
+     * @memberOf AmqpEvent#
      */
     $prototype.target;
 
@@ -9479,7 +9468,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name getBodyAsArrayBuffer
-     * @memberOf AmqpEvent
+     * @memberOf AmqpEvent#
      */
     $prototype.getBodyAsArrayBuffer = function() {
         if (typeof(ArrayBuffer) === "undefined") {
@@ -9501,7 +9490,7 @@ var AmqpProperties = function(headers) {
      * @public
      * @function
      * @name getBodyAsByteBuffer
-     * @memberOf AmqpEvent
+     * @memberOf AmqpEvent#
      */
     $prototype.getBodyAsByteBuffer = function() {
         return (this._body || null);
@@ -9542,7 +9531,7 @@ var AmqpClientFactory = function() {
      *
      * @public
      * @function
-     * @memberOf AmqpClientFactory
+     * @memberOf AmqpClientFactory#
      */
     $prototype.createAmqpClient = function() {
         return new AmqpClient(this);
@@ -9560,7 +9549,7 @@ var AmqpClientFactory = function() {
      * @public
      * @function
      * @name getWebSocketFactory
-     * @memberOf AmqpClientFactory
+     * @memberOf AmqpClientFactory#
      */
     $prototype.getWebSocketFactory = function() {
         return (this._webSocketFactory || null);
@@ -9578,7 +9567,7 @@ var AmqpClientFactory = function() {
      * @public
      * @function
      * @name setWebSocketFactory
-     * @memberOf AmqpClientFactory
+     * @memberOf AmqpClientFactory#
      */
     $prototype.setWebSocketFactory = function(factory) {
         if ((factory === null) || (typeof(factory) === "undefined")) {

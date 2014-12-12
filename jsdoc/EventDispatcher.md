@@ -14,9 +14,11 @@ Adds an event listener for the specified type.
 *   type _String_
 
     the event type
+<p>
 *   listener _Function_
 
     the listener
+<p>
 
 
 ###removeEventListener
@@ -29,9 +31,11 @@ Removes the specified event listener.
 *   type _String_
 
     the event type
+<p>
 *   listener _Function_
 
     the listener
+<p>
 
 
 ###hasEventListener

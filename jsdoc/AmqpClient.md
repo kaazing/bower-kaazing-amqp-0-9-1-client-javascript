@@ -45,15 +45,15 @@ Configuration style API with named parameters/properties.
  Note that 'url', 'virtualHost' and 'credentials' are required properties
  and valid values must be passed in. A JavaScript error is thrown if the
  aforementioned arguments are undefined, null, or empty string.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
 
 
 ###disconnect
 
-Disconnect from the AMQP broker
+Disconnect from the AMQP broker.
 
 **Returns**: _Void_ - 
 
@@ -66,8 +66,7 @@ Opens an AMQP Channel
 **Params**:  
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
 
 
 ###getAmqpClientFactory

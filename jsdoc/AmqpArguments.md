@@ -11,7 +11,8 @@ Adds a long string value to an AmqpArguments table.
 **Returns**: _AmqpArguments_ - 
 
 **Params**:  
-*   key _String_
+*   key
+&lt;p&gt; _String_
 
     
 *   value _String_
@@ -26,7 +27,8 @@ Adds an integer value to an AmqpArguments table.
 **Returns**: _AmqpArguments_ - 
 
 **Params**:  
-*   key _String_
+*   key
+&lt;p&gt; _String_
 
     
 *   value _Number_

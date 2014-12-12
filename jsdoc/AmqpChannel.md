@@ -18,9 +18,11 @@ This method asks the peer to pause or restart the flow of content data sent by
 *   active _Bit_
 
     start/stop content frames
+ <p>
 *   callback _Function_
 
     Function to be called on success
+ <p>
 
 
 ###flowOkChannel
@@ -33,9 +35,11 @@ Confirms to the peer that a flow command was received and processed.
 *   active _Bit_
 
     current flow setting
+ <p>
 *   callback _Function_
 
     Function to be called on success
+ <p>
 
 
 ###recoverBasic
@@ -50,9 +54,11 @@ This method asks the server to redeliver all unacknowledged messages on a
 *   requeue _Bit_
 
     requeue the message
+ <p>
 *   callback _Function_
 
     Function to be called on success
+ <p>
 
 
 ###selectTx
@@ -66,6 +72,7 @@ This method sets the channel to use standard transactions. The client must use t
 *   callback _Function_
 
     Function to be called on success
+ <p>
 
 
 ###commitTx
@@ -79,6 +86,7 @@ This method commits all message publications and acknowledgments performed in
 *   callback _Function_
 
     Function to be called on success
+ <p>
 
 
 ###rollbackTx
@@ -94,6 +102,7 @@ This method abandons all message publications and acknowledgments performed in
 *   callback _Function_
 
     Function to be called on success
+ <p>
 
 
 ###closeChannel
@@ -138,11 +147,11 @@ Default values are as follows:
                          methodId   --  0
                          callback   -- undefined
                        </pre>
-'callback' specifies a function to be called on success.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###declareExchange
@@ -179,11 +188,12 @@ function as shown below:
 legal values of the required 'type' param are 'direct', 'fanout', 'headers', 
 and 'topic' Boolean params 'passive', 'durable', and 'noWait' have a default
 value of false. Param 'args' is an optional param that can be used to pass 
-in additional properties.
+in additional properties. 
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###deleteExchange
@@ -216,10 +226,11 @@ function as shown below:
                        </pre>
 Required parameter 'exchange' specifies the name of the exchange. Default 
 values of the optional boolean parameters 'ifUnused' and 'noWait' is false.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###declareQueue
@@ -259,10 +270,11 @@ Required parameter 'queue' specifies the queue name. Boolean parameters
 'passive', 'durable', 'noWait', 'exclusive' and 'autoDelete' are optional 
 with false as the default value. Param 'args' is an optional param that 
 can be used to pass in additional properties for declaration.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###bindQueue
@@ -307,10 +319,11 @@ specifies the key to be used to bind the queue to the exchange. Boolean
 parameter 'noWait' is optional with false as the default value. Param 'args'
 is an optional amd can be used to pass in additional properties for 
 declaration.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###unbindQueue
@@ -345,12 +358,12 @@ Required parameter 'queue' specifies the queue name. Required parameter
 'exchange' specifies the exchange name. Required parameter 'routingKey'
 specifies the key that was used to bind the queue to the exchange. Parameter 
 'args' is optional and can be used to pass in additional properties for 
-declaration. Optional param 'callback' specifies the function to be invoked
- on success.
+declaration.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###purgeQueue
@@ -382,10 +395,11 @@ function as shown below:
                        </pre>
 Required parameter 'queue' specifies the queue name. Boolean parameter 
 'noWait' is optional with false as the default value.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###deleteQueue
@@ -418,11 +432,12 @@ function as shown below:
                        }
 Required parameter 'queue' specifies the queue name. Boolean parameters 
 'ifUnused', 'ifEmpty', and 'noWait' are optional with false as the default 
-value.
+value. 
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###qosBasic
@@ -458,10 +473,11 @@ function as shown below:
                        </pre>
 Parameter 'prefetchSize' and 'prefetchCount' are required. Boolean parameter
 'global' is optional with false as the default value.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###consumeBasic
@@ -534,8 +550,8 @@ Parameter 'args' is optional and can be used to pass in additional properties
 for declaration.
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###cancelBasic
@@ -571,10 +587,11 @@ function as shown below:
                        </pre>
 Required parameter consumerTag' is required. Boolean parameters 'noWait' is 
 optional with false as the default value.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###publishBasic
@@ -623,10 +640,11 @@ provides getter/setter APIs for all the pre-defined properties as a
 convenience. Required parameter 'exchange' specifies the name of the exchange. 
 Parameter 'routingKey' is required. Boolean parameters 'mandatory' and 
 'immediate' are optional with false as the default value.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###getBasic
@@ -658,10 +676,11 @@ function as shown below:
                        </pre>
 Required parameter 'queue' specifies the queue name. Boolean parameter 
 'noAck' is optional with false as the default value.
+<p>
 *   callback _Function_
 
-    Optional param specifies the function that is 
-                             to be invoked on success.
+    Optional param specifies the function that is to be invoked on success.
+<p>
 
 
 ###ackBasic
@@ -694,6 +713,7 @@ function as shown below:
                        </pre>
 Parameter 'deliveryTag' is required. Boolean parameter 'multiple' is optional
 with false as the default value.
+<p>
 
 
 ###rejectBasic
@@ -728,5 +748,6 @@ original queue.
                        </pre>
 Parameter 'deliveryTag' is required. Boolean parameter 'requeue' is optional
 with false as the default value.
+<p>
 
 
