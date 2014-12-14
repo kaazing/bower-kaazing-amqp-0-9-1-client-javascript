@@ -412,7 +412,7 @@ function URI(str) {
 
 
 // See HTML5 Specification, Section 6.4 Cross-document Messaging
-/**
+/*
  * Provides an emulation of HTML5 window.postMessage, 
  * leveraging the native implementation if available.
  *
