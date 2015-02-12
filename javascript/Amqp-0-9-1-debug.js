@@ -3018,7 +3018,7 @@ $prototype.dispatchEvent = function(e) {
 
 $module.EventDispatcher = EventDispatcher;
 // end module closure
-})(window || Kaazing.AMQP);
+})(Kaazing.AMQP);
 
 
 /**
@@ -8618,8 +8618,8 @@ ActionList.prototype._addAction = function _addAction(methodName, object, func, 
  * Copyright (c) 2007-2014, Kaazing Corporation. All rights reserved.
  */
 
-window.AmqpClient = $module.AmqpClient  = AmqpClient;
-window.AmqpChannel  = $module.AmqpChannel = AmqpChannel;
+$module.AmqpClient  = AmqpClient;
+$module.AmqpChannel = AmqpChannel;
 
 })();
 
@@ -8715,7 +8715,7 @@ AmqpArguments.prototype = new Array();
 
     $module.AmqpArguments = AmqpArguments;
     
-})(window || Kaazing.AMQP);
+})(Kaazing.AMQP);
 
 
 
@@ -9302,7 +9302,7 @@ var AmqpProperties = function(headers) {
 
     $module.AmqpProperties = AmqpProperties;
     
-})(window || Kaazing.AMQP);
+})(Kaazing.AMQP);
 
 /**
  * Copyright (c) 2007-2014, Kaazing Corporation. All rights reserved.
@@ -9509,7 +9509,7 @@ var AmqpProperties = function(headers) {
 
     $module.AmqpEvent = AmqpEvent;
     
-})(window || Kaazing.AMQP);
+})(Kaazing.AMQP);
 
 
 
@@ -9588,4 +9588,4 @@ var AmqpClientFactory = function() {
 
     $module.AmqpClientFactory = AmqpClientFactory;
 
-})(window || Kaazing.AMQP);
+})(Kaazing.AMQP);
